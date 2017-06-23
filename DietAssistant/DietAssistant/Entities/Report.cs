@@ -23,6 +23,12 @@ namespace DietAssistant.Entities
 
         public double Proteins { get; set; }
 
+        public string WarningByCarbohydrates { get; set; }
+
+        public string WarningByFats { get; set; }
+
+        public string WarningByProteins { get; set; }
+
         [Required]
         [ForeignKey(nameof(UserId))]
         public User User { get; set; }

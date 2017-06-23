@@ -30,7 +30,7 @@ namespace DietAssistant.BLL.Tests.Services
 
 
         [Test]
-        public void CreateAsync_CallsCreateAsyncFromDal_WhenTeamIsValid()
+        public void Create_CallsCreateFromDal_WhenUserDishIsValid()
         {
             var model = new UserDishDto { Id = 1, Date = DateTime.UtcNow, DishId = 1, UserId = 1, Grams = 100};
 

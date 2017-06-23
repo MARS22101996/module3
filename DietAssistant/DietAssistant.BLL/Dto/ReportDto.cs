@@ -16,6 +16,12 @@ namespace DietAssistant.BLL.Dto
 
         public double Proteins { get; set; }
 
+        public string WarningByCarbohydrates { get; set; }
+
+        public string WarningByFats { get; set; }
+
+        public string WarningByProteins { get; set; }
+
         public UserDto User { get; set; }
 
     }
