@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A647217D-7667-4E85-A92D-FED44F424B52}</ProjectGuid>
+    <ProjectGuid>{0ABEECF8-9E28-4C2F-B72B-DD84D485C3F3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DietAssistant.BLL</RootNamespace>
-    <AssemblyName>DietAssistant.BLL</AssemblyName>
+    <RootNamespace>DietAssistant.BLL.Tests</RootNamespace>
+    <AssemblyName>DietAssistant.BLL.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,6 +34,18 @@
       <HintPath>..\packages\AutoMapper.6.1.0\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Castle.Core, Version=4.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.1.0\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Moq, Version=4.7.63.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.7.63\lib\net45\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,23 +56,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dto\DishDto.cs" />
-    <Compile Include="Dto\ReportDto.cs" />
-    <Compile Include="Dto\UserDto.cs" />
-    <Compile Include="Dto\UserDishDto.cs" />
-    <Compile Include="Infrastructure\Automapper\AutoMapperConfiguration.cs" />
-    <Compile Include="Infrastructure\Automapper\DtoToEntityProfile.cs" />
-    <Compile Include="Infrastructure\Automapper\EntityToDtoProfile.cs" />
-    <Compile Include="Interfaces\IDishUserService.cs" />
-    <Compile Include="Interfaces\IReportService.cs" />
+    <Compile Include="Services\DishUserServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\DishUserService.cs" />
-    <Compile Include="Services\ReportService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DietAssistant.Core\DietAssistant.Core.csproj">
-      <Project>{96BE9EDB-50DF-49BA-ACF5-BB2244EF42FC}</Project>
-      <Name>DietAssistant.Core</Name>
+    <ProjectReference Include="..\DietAssistant.BLL\DietAssistant.BLL.csproj">
+      <Project>{A647217D-7667-4E85-A92D-FED44F424B52}</Project>
+      <Name>DietAssistant.BLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\DietAssistant\DietAssistant.DAL.csproj">
       <Project>{4B82AE06-22E3-4AD9-8BC5-C12DCACECA43}</Project>

@@ -19,7 +19,7 @@ namespace DietAssistant.BLL.Services
 
         public ReportDto GetReportForUser(DateTime date, int userId)
         {
-            var dishesOfUser= _unitOfWork.UserDishes.Find(x => x.Date == date && x.UserId == userId).ToList();
+            var dishesOfUser = _unitOfWork.UserDishes.Find(x => x.Date == date && x.UserId == userId).ToList();
 
             var totalCarbohydrates = dishesOfUser.Sum(x => x.Dish.CarbohydratesPer100Grams * (x.Grams / 100.0));
 
@@ -31,7 +31,15 @@ namespace DietAssistant.BLL.Services
 
             var userDto = Mapper.Map<UserDto>(user);
 
-            var report = new ReportDto() { Date = date, Carbohydrates = totalCarbohydrates, Fats = totalFats, Proteins = totalProteins, UserId = userId, User = userDto};
+            var report = new ReportDto()
+            {
+                Date = date,
+                Carbohydrates = totalCarbohydrates,
+                Fats = totalFats,
+                Proteins = totalProteins,
+                UserId = userId,
+                User = userDto
+            };
 
             return report;
         }

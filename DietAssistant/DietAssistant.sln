@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DietAssistant.Core", "DietA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DietAssistant.BLL", "DietAssistant.BLL\DietAssistant.BLL.csproj", "{A647217D-7667-4E85-A92D-FED44F424B52}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DietAssistant.BLL.Tests", "DietAssistant.BLL.Tests\DietAssistant.BLL.Tests.csproj", "{0ABEECF8-9E28-4C2F-B72B-DD84D485C3F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A647217D-7667-4E85-A92D-FED44F424B52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A647217D-7667-4E85-A92D-FED44F424B52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A647217D-7667-4E85-A92D-FED44F424B52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ABEECF8-9E28-4C2F-B72B-DD84D485C3F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ABEECF8-9E28-4C2F-B72B-DD84D485C3F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ABEECF8-9E28-4C2F-B72B-DD84D485C3F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ABEECF8-9E28-4C2F-B72B-DD84D485C3F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
