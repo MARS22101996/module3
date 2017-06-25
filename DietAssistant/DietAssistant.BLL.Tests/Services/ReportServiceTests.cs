@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using DietAssistant.BLL.Dto;
 using DietAssistant.BLL.Infrastructure.Automapper;
+using DietAssistant.BLL.Infrastructure.Exceptions;
 using DietAssistant.BLL.Interfaces;
 using DietAssistant.BLL.Services;
 using DietAssistant.BLL.Tests.Infrastructure;
+using DietAssistant.Core.Enums;
 using DietAssistant.Entities;
 using DietAssistant.Interfaces;
 using Moq;
@@ -58,6 +60,47 @@ namespace DietAssistant.BLL.Tests.Services
         }
 
         [Test]
+        public void GetAverageDailyReportByBodyType_ReturnsCorrectAverageAmount_WhenDataExists()
+        {
+            const int averageCarbonates = 20;
+            const int averageFats = 20;
+            const int averageProteins = 20;
+            const BodyType type = BodyType.Ectomorph;
+            var date = DateTime.UtcNow;
+            _unitOfWorkMock.Setup(unitOfWork => unitOfWork.Reports.Find(It.IsAny<Func<Report, bool>>()))
+                .Returns(_testData.GetReportsWithType(date, type).AsQueryable);
+
+            var report = _sut.GetAverageDailyReportByBodyType(date,type);
+
+            Assert.AreEqual(averageCarbonates, report.AverageCarbohydrates);
+            Assert.AreEqual(averageFats, report.AverageFats);
+            Assert.AreEqual(averageProteins, report.AverageProteins);
+        }
+
+
+        [Test]
+        public void GetAverageDailyReportByBodyType_ReturnsCorrectType_WhenDataExists()
+        {
+            const BodyType type = BodyType.Ectomorph;
+            var date = DateTime.UtcNow;
+            _unitOfWorkMock.Setup(unitOfWork => unitOfWork.Reports.Find(It.IsAny<Func<Report, bool>>()))
+                .Returns(_testData.GetReportsWithType(date, type).AsQueryable);
+
+            var report = _sut.GetAverageDailyReportByBodyType(date, type);
+
+            Assert.AreEqual(type, report.Type);
+        }
+
+        [Test]
+        public void GetAverageDailyReportByBodyType_ThrowsEntityNotFoundException_WhenReportsAreAbsent()
+        {
+            _unitOfWorkMock.Setup(unitOfWork => unitOfWork.Reports.Find(It.IsAny<Func<Report, bool>>()))
+                .Returns(new List<Report>().AsQueryable);
+
+            Assert.Throws<EntityNotFoundException>(() => _sut.GetAverageDailyReportByBodyType(DateTime.UtcNow, BodyType.Ectomorph));
+        }
+
+        [Test]
         public void GetReportForUser_ReturnsReportWithoutViolations_WhenViolationsAreAbsent()
         {
             var date = DateTime.UtcNow;
@@ -71,24 +114,23 @@ namespace DietAssistant.BLL.Tests.Services
             Assert.IsNull(report.WarningByFats);
             Assert.IsNull(report.WarningByProteins);
         }
+
+        
         [Test]
-        public void GetReportForUser_ReturnsNull_WhenUserDoesNotHaveDishes()
+        public void GetReportForUser_ThrowsEntityNotFoundException_WhenUserDoesNotHaveDishes()
         {
             _unitOfWorkMock.Setup(unitOfWork => unitOfWork.UserDishes.Find(It.IsAny<Func<UserDish, bool>>()))
-                .Returns(new List<UserDish>().AsQueryable());         
-
-            var report = _sut.GetReportForUser(DateTime.UtcNow, _testUser);
+                .Returns(new List<UserDish>().AsQueryable());                  
         
-            Assert.IsNull(report);       
+            Assert.Throws<EntityNotFoundException>(() => _sut.GetReportForUser(DateTime.UtcNow, _testUser));       
         }
 
         [Test]
         public void GetReportForUser_ReturnsReportWithRightSum_WhenDataExists()
         {
-            var dishesOfUser = _testData.GetUserDishes(_testDishes, DateTime.UtcNow, _testUser.Id).ToList();
-            var sumOfCarbonates = dishesOfUser.Sum(x => x.Dish.CarbohydratesPer100Grams * (x.Grams / 100.0));
-            var sumOfFats = dishesOfUser.Sum(x => x.Dish.FatsPer100Grams * (x.Grams / 100.0));
-            var sumOfProteins = dishesOfUser.Sum(x => x.Dish.ProteinsPer100Grams * (x.Grams / 100.0));
+            const int sumOfCarbonates = 39;
+            const int sumOfFats = 39;
+            const int sumOfProteins = 39;
             _unitOfWorkMock.Setup(unitOfWork => unitOfWork.UserDishes.Find(It.IsAny<Func<UserDish, bool>>()))
                 .Returns(_testData.GetUserDishes(_testDishes, DateTime.UtcNow, _testUser.Id).AsQueryable);           
 

@@ -75,6 +75,10 @@
       <Project>{A647217D-7667-4E85-A92D-FED44F424B52}</Project>
       <Name>DietAssistant.BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DietAssistant.Core\DietAssistant.Core.csproj">
+      <Project>{96BE9EDB-50DF-49BA-ACF5-BB2244EF42FC}</Project>
+      <Name>DietAssistant.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DietAssistant\DietAssistant.DAL.csproj">
       <Project>{4B82AE06-22E3-4AD9-8BC5-C12DCACECA43}</Project>
       <Name>DietAssistant.DAL</Name>

@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using DietAssistant.BLL.Dto;
+using DietAssistant.BLL.Infrastructure.Exceptions;
 using DietAssistant.BLL.Interfaces;
 using DietAssistant.Entities;
 using DietAssistant.BLL.Models;
+using DietAssistant.Core.Enums;
 
 namespace DietAssistant.BLL.Services
 {
@@ -27,7 +29,9 @@ namespace DietAssistant.BLL.Services
 
             if (!dishesOfUser.Any())
             {
-                return null;
+                throw new EntityNotFoundException(
+                    $"User with such id doesn't not have dishes for this date. Id: {userDto.Id}. Date: {date}",
+                    "UserDish");
             }
 
             var report = new ReportDto
@@ -56,6 +60,29 @@ namespace DietAssistant.BLL.Services
             _unitOfWork.Reports.Create(report);
 
             _unitOfWork.Save();
+        }
+
+        public ReportByType GetAverageDailyReportByBodyType(DateTime date, BodyType bodyType)
+        {
+            var dailyReports = _unitOfWork.Reports.Find(x => x.Date == date && x.User.Type == bodyType).ToList();
+
+            if (!dailyReports.Any())
+            {
+                throw new EntityNotFoundException(
+                    $"Users with such body type doesn't not have reports for this date. Type: {bodyType}. Date: {date}",
+                    "Report");
+            }
+
+            var reportByType = new ReportByType
+            {
+                Date = date,
+                AverageCarbohydrates = CalculatesAverageCarbohydrates(dailyReports),
+                AverageFats = CalculatesAverageFats(dailyReports),
+                AverageProteins = CalculatesAverageProteins(dailyReports),
+                Type = bodyType
+            };
+
+            return reportByType;
         }
 
         public IEnumerable<ReportDto> GetDailyStatistic(DateTime date)
@@ -90,6 +117,25 @@ namespace DietAssistant.BLL.Services
         {
             var totalProteins = dishesOfUser.Sum(x => x.Dish.ProteinsPer100Grams * (x.Grams / 100.0));
             return totalProteins;
+        }
+
+
+        private double CalculatesAverageCarbohydrates(IEnumerable<Report> reports)
+        {
+            var averageCarbohydrates = reports.Average(x => x.Carbohydrates);
+            return averageCarbohydrates;
+        }
+
+        private double CalculatesAverageFats(IEnumerable<Report> reports)
+        {
+            var averageFats = reports.Average(x => x.Fats);
+            return averageFats;
+        }
+
+        private double CalculatesAverageProteins(IEnumerable<Report> reports)
+        {
+            var averageProteins = reports.Average(x => x.Proteins);
+            return averageProteins;
         }
 
         private void CheckByCarbohydrates(ReportDto report)

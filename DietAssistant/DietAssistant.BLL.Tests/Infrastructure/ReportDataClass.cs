@@ -2,6 +2,7 @@
 using DietAssistant.Entities;
 using System.Collections.Generic;
 using DietAssistant.BLL.Dto;
+using DietAssistant.Core.Enums;
 
 namespace DietAssistant.BLL.Tests.Infrastructure
 {
@@ -32,8 +33,8 @@ namespace DietAssistant.BLL.Tests.Infrastructure
         {
             get
             {
-                yield return new Report();
-                yield return new Report();
+                yield return new Report {Carbohydrates = 10, Fats = 20, Proteins = 30};
+                yield return new Report {Carbohydrates = 30, Fats = 20, Proteins = 10};
             }
         }
 
@@ -64,7 +65,7 @@ namespace DietAssistant.BLL.Tests.Infrastructure
             return dishesOfUser;
         }
 
-        public List<UserDish> GetUserDishesWithViolations(List<Dish> dishes, DateTime date, int userId)
+        public IEnumerable<UserDish> GetUserDishesWithViolations(List<Dish> dishes, DateTime date, int userId)
         {
             var dishesOfUser = new List<UserDish>
             {
@@ -78,6 +79,17 @@ namespace DietAssistant.BLL.Tests.Infrastructure
             };
             return dishesOfUser;
         }
+
+        public IEnumerable<Report> GetReportsWithType(DateTime date, BodyType bodyType)
+        {
+            var reports = new List<Report>
+            {
+                new Report { Date = date, Carbohydrates = 10, Fats = 20, Proteins = 30, User = new User {Type = bodyType} },
+                new Report { Date = date, Carbohydrates = 30, Fats = 20, Proteins = 10, User = new User {Type = bodyType} }
+            };
+            return reports;
+        }
+
     }
 
 }
