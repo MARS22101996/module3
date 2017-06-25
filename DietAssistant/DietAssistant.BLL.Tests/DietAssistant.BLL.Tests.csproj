@@ -68,6 +68,7 @@
     <Compile Include="Infrastructure\ReportDataClass.cs" />
     <Compile Include="Services\DishUserServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ExtendedReportServiceTests.cs" />
     <Compile Include="Services\ReportServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
