@@ -17,7 +17,6 @@ namespace DietAssistant.BLL.Tests.Services
     [TestFixture]
     public class ExtendedReportServiceTests
     {
-
         private IExtendedReportService _sut;
         private Mock<IUnitOfWork> _unitOfWorkMock;
         private ReportDataClass _testData;
@@ -81,7 +80,8 @@ namespace DietAssistant.BLL.Tests.Services
             _unitOfWorkMock.Setup(unitOfWork => unitOfWork.Reports.Find(It.IsAny<Func<Report, bool>>()))
                 .Returns(new List<Report>().AsQueryable);
 
-            Assert.Throws<EntityNotFoundException>(() => _sut.GetAverageDailyReportByBodyType(DateTime.UtcNow, BodyType.Ectomorph));
+            Assert.Throws<EntityNotFoundException>(
+                () => _sut.GetAverageDailyReportByBodyType(DateTime.UtcNow, BodyType.Ectomorph));
         }
     }
 }

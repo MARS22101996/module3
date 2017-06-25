@@ -28,7 +28,7 @@ namespace DietAssistant.BLL.Services
             if (!dailyReports.Any())
             {
                 throw new EntityNotFoundException(
-                    $"Users with such body type doesn't not have reports for this date. Type: {bodyType}. Date: {date}",
+                    $"Users with such body type doesn't have reports for this date. Type: {bodyType}. Date: {date}",
                     "Report");
             }
 

@@ -7,12 +7,10 @@ using DietAssistant.BLL.Infrastructure.Exceptions;
 using DietAssistant.BLL.Interfaces;
 using DietAssistant.BLL.Services;
 using DietAssistant.BLL.Tests.Infrastructure;
-using DietAssistant.Core.Enums;
 using DietAssistant.Entities;
 using DietAssistant.Interfaces;
 using Moq;
 using NUnit.Framework;
-
 
 namespace DietAssistant.BLL.Tests.Services
 {
@@ -31,7 +29,7 @@ namespace DietAssistant.BLL.Tests.Services
             AutoMapperConfiguration.Configure();
             _unitOfWorkMock = new Mock<IUnitOfWork>();
             _sut = new ReportService(_unitOfWorkMock.Object);
-             _testData = new ReportDataClass();
+            _testData = new ReportDataClass();
             _testUser = _testData.User;
             _testDishes = _testData.GetDishes.ToList();
         }
@@ -64,14 +62,14 @@ namespace DietAssistant.BLL.Tests.Services
             Assert.IsNull(report.WarningByProteins);
         }
 
-        
+
         [Test]
         public void GetReportForUser_ThrowsEntityNotFoundException_WhenUserDoesNotHaveDishes()
         {
             _unitOfWorkMock.Setup(unitOfWork => unitOfWork.UserDishes.Find(It.IsAny<Func<UserDish, bool>>()))
-                .Returns(new List<UserDish>().AsQueryable());                  
-        
-            Assert.Throws<EntityNotFoundException>(() => _sut.GetReportForUser(DateTime.UtcNow, _testUser));       
+                .Returns(new List<UserDish>().AsQueryable());
+
+            Assert.Throws<EntityNotFoundException>(() => _sut.GetReportForUser(DateTime.UtcNow, _testUser));
         }
 
         [Test]
@@ -81,7 +79,7 @@ namespace DietAssistant.BLL.Tests.Services
             const int sumOfFats = 39;
             const int sumOfProteins = 39;
             _unitOfWorkMock.Setup(unitOfWork => unitOfWork.UserDishes.Find(It.IsAny<Func<UserDish, bool>>()))
-                .Returns(_testData.GetUserDishes(_testDishes, DateTime.UtcNow, _testUser.Id).AsQueryable);           
+                .Returns(_testData.GetUserDishes(_testDishes, DateTime.UtcNow, _testUser.Id).AsQueryable);
 
             var report = _sut.GetReportForUser(DateTime.UtcNow, _testUser);
 
@@ -96,7 +94,7 @@ namespace DietAssistant.BLL.Tests.Services
             var date = DateTime.UtcNow;
             var dishesOfUser = _testData.GetUserDishes(_testDishes, date, _testUser.Id);
             _unitOfWorkMock.Setup(unitOfWork => unitOfWork.UserDishes.Find(It.IsAny<Func<UserDish, bool>>()))
-                .Returns(dishesOfUser.AsQueryable);            
+                .Returns(dishesOfUser.AsQueryable);
 
             var report = _sut.GetReportForUser(date, _testUser);
 
@@ -109,7 +107,7 @@ namespace DietAssistant.BLL.Tests.Services
             var date = DateTime.UtcNow;
             var dishesOfUser = _testData.GetUserDishes(_testDishes, date, _testUser.Id);
             _unitOfWorkMock.Setup(unitOfWork => unitOfWork.UserDishes.Find(It.IsAny<Func<UserDish, bool>>()))
-                .Returns(dishesOfUser.AsQueryable);            
+                .Returns(dishesOfUser.AsQueryable);
 
             var report = _sut.GetReportForUser(date, _testUser);
 
@@ -122,11 +120,11 @@ namespace DietAssistant.BLL.Tests.Services
             var date = DateTime.UtcNow;
             var dishesOfUser = _testData.GetUserDishesWithViolations(_testDishes, date, _testUser.Id);
             _unitOfWorkMock.Setup(unitOfWork => unitOfWork.UserDishes.Find(It.IsAny<Func<UserDish, bool>>()))
-                .Returns(dishesOfUser.AsQueryable);          
+                .Returns(dishesOfUser.AsQueryable);
 
             var report = _sut.GetReportForUser(date, _testUser);
 
-            Assert.IsNotNull(report.WarningByCarbohydrates);          
+            Assert.IsNotNull(report.WarningByCarbohydrates);
         }
 
         [Test]
@@ -135,7 +133,7 @@ namespace DietAssistant.BLL.Tests.Services
             var date = DateTime.UtcNow;
             var dishesOfUser = _testData.GetUserDishesWithViolations(_testDishes, date, _testUser.Id);
             _unitOfWorkMock.Setup(unitOfWork => unitOfWork.UserDishes.Find(It.IsAny<Func<UserDish, bool>>()))
-                .Returns(dishesOfUser.AsQueryable);         
+                .Returns(dishesOfUser.AsQueryable);
 
             var report = _sut.GetReportForUser(date, _testUser);
 
@@ -148,7 +146,7 @@ namespace DietAssistant.BLL.Tests.Services
             var date = DateTime.UtcNow;
             var dishesOfUser = _testData.GetUserDishesWithViolations(_testDishes, date, _testUser.Id);
             _unitOfWorkMock.Setup(unitOfWork => unitOfWork.UserDishes.Find(It.IsAny<Func<UserDish, bool>>()))
-                .Returns(dishesOfUser.AsQueryable);           
+                .Returns(dishesOfUser.AsQueryable);
 
             var report = _sut.GetReportForUser(date, _testUser);
 

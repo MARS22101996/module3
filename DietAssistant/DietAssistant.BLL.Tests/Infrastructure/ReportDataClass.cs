@@ -8,7 +8,7 @@ namespace DietAssistant.BLL.Tests.Infrastructure
 {
     public class ReportDataClass
     {
-        public UserDto User => new UserDto { Id = 1 };
+        public UserDto User => new UserDto {Id = 1};
 
         public IEnumerable<Dish> GetDishes
         {
@@ -40,9 +40,10 @@ namespace DietAssistant.BLL.Tests.Infrastructure
 
         public IEnumerable<Report> GetReportsByDay(DateTime date)
         {
-            var reportsByDate = new List<Report> { new Report(), new Report() };
+            var reportsByDate = new List<Report> {new Report(), new Report()};
             return reportsByDate;
         }
+
         public IEnumerable<UserDish> GetUserDishes(List<Dish> dishes, DateTime date, int userId)
         {
             var dishesOfUser = new List<UserDish>
@@ -75,7 +76,7 @@ namespace DietAssistant.BLL.Tests.Infrastructure
                     Dish = dishes[0],
                     Grams = 100,
                     UserId = userId,
-                }           
+                }
             };
             return dishesOfUser;
         }
@@ -84,12 +85,24 @@ namespace DietAssistant.BLL.Tests.Infrastructure
         {
             var reports = new List<Report>
             {
-                new Report { Date = date, Carbohydrates = 10, Fats = 20, Proteins = 30, User = new User {Type = bodyType} },
-                new Report { Date = date, Carbohydrates = 30, Fats = 20, Proteins = 10, User = new User {Type = bodyType} }
+                new Report
+                {
+                    Date = date,
+                    Carbohydrates = 10,
+                    Fats = 20,
+                    Proteins = 30,
+                    User = new User {Type = bodyType}
+                },
+                new Report
+                {
+                    Date = date,
+                    Carbohydrates = 30,
+                    Fats = 20,
+                    Proteins = 10,
+                    User = new User {Type = bodyType}
+                }
             };
             return reports;
         }
-
     }
-
 }

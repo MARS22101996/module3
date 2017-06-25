@@ -29,7 +29,7 @@ namespace DietAssistant.BLL.Services
             if (!dishesOfUser.Any())
             {
                 throw new EntityNotFoundException(
-                    $"User with such id doesn't not have dishes for this date. Id: {userDto.Id}. Date: {date}",
+                    $"User with such id doesn't have dishes for this date. Id: {userDto.Id}. Date: {date}",
                     "UserDish");
             }
 
