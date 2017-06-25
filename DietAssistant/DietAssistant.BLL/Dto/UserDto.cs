@@ -15,7 +15,6 @@ namespace DietAssistant.BLL.Dto
 
         public BodyType Type { get; set; }
 
-        public ICollection<UserDishDto> UserDishes { get; set; }
-
+        public IEnumerable<UserDishDto> UserDishes { get; set; }
     }
 }

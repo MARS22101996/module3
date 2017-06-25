@@ -14,7 +14,6 @@ namespace DietAssistant.BLL.Dto
 
         public double ProteinsPer100Grams { get; set; }
 
-        public ICollection<UserDishDto> UserDishes { get; set; }
-
+        public IEnumerable<UserDishDto> UserDishes { get; set; }
     }
 }

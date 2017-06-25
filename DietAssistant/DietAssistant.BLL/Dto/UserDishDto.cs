@@ -14,8 +14,8 @@ namespace DietAssistant.BLL.Dto
 
         public int Grams { get; set; }
 
-        public  DishDto Dish { get; set; }
+        public DishDto Dish { get; set; }
 
-        public  UserDto User { get; set; }
+        public UserDto User { get; set; }
     }
 }
