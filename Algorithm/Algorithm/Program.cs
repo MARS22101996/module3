@@ -66,7 +66,7 @@ namespace Algorithm
             var bp = new DietPlan(Convert.ToDouble(limit));
 
             //bp.MakeAllSets1(dishes);
-            bp.MakeAllSets(dishes, DietStrategy.CarbohydrateBased);
+            bp.MakeAllSets(dishes, DietStrategy.ProteinBased);
 
 
             List<Dish> solve = bp.GetBestSet();
