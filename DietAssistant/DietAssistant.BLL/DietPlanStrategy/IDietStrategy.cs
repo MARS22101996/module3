@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using DietAssistant.Core.Enums;
+using DietAssistant.Entities;
 
-namespace Algorithm.DietPlanStrategy
+namespace DietAssistant.BLL.DietPlanStrategy
 {
     public interface IDietStrategy 
     {

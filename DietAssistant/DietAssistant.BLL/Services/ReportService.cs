@@ -19,7 +19,7 @@ namespace DietAssistant.BLL.Services
         public ReportService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _nutritionLimits = new NutritionLimits();           
+            _nutritionLimits = new NutritionLimits();
         }
 
         public ReportDto GetReportForUser(DateTime date, UserDto userDto)

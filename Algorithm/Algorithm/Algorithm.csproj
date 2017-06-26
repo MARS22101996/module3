@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DietPlan.cs" />
+    <Compile Include="DietPlanStrategy\AbstractStrategy.cs" />
     <Compile Include="DietPlanStrategy\CarbohydrateStrategy.cs" />
     <Compile Include="DietPlanStrategy\IDietStrategy.cs" />
     <Compile Include="DietPlanStrategy\DietProvider.cs" />

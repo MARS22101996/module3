@@ -1,8 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using DietAssistant.BLL.Models;
+using DietAssistant.Core.Enums;
+using DietAssistant.Entities;
+using Algorithm.DietPlanStrategy;
 
-namespace Algorithm.DietPlanStrategy
+namespace DietAssistant.BLL.DietPlanStrategy
 {
     public class FatStrategy : AbstractStrategy, IDietStrategy
     {
@@ -13,7 +16,7 @@ namespace Algorithm.DietPlanStrategy
         {
             var proteinSum = CalculateProteins(items);
             var fatSum = CalculateFats(items);
-            var carboSum = CalculateCarbohydrates(items);
+            var carboSum =CalculateCarbohydrates(items);
             if (!bestItems.Any())
             {
                 if (fatSum <= allowedValue && fatSum > NutritionLimits.MinFats &&
@@ -28,7 +31,7 @@ namespace Algorithm.DietPlanStrategy
             }
             else
             {
-                if (fatSum <= allowedValue && fatSum > NutritionLimits.MinFats &&
+                if (fatSum <=allowedValue && fatSum > NutritionLimits.MinFats &&
                     carboSum > NutritionLimits.MinCarbohydrates &&
                     carboSum < NutritionLimits.MaxCarbohydrates &&
                     proteinSum > NutritionLimits.MinProtein && proteinSum < NutritionLimits.MaxProtein

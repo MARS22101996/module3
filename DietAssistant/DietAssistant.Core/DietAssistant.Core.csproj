@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\DietStrategy.cs" />
     <Compile Include="Enums\BodyType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

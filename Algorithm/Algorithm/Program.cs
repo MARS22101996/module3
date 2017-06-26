@@ -63,10 +63,10 @@ namespace Algorithm
             };
 
             var limit = Console.ReadLine();
-            var bp = new DietPlan(Convert.ToDouble(limit));
+            var bp = new DietPlan();
 
             //bp.MakeAllSets1(dishes);
-            bp.MakeAllSets(dishes, DietStrategy.ProteinBased);
+            bp.MakeAllSets(dishes, DietStrategy.ProteinBased, Convert.ToDouble(limit));
 
 
             List<Dish> solve = bp.GetBestSet();

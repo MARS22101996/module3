@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Algorithm.DietPlanStrategy;
 
 namespace Algorithm
@@ -12,11 +11,9 @@ namespace Algorithm
 
         private double _bestSecondValue;
 
-        private readonly StrategyModel _model;
-
         private readonly DietProvider _dietProvider;
 
-        public DietPlan(double allowedValue)
+        public DietPlan()
         {
             var list = new List<IDietStrategy>
             {
@@ -24,17 +21,17 @@ namespace Algorithm
                 new FatStrategy(),
                 new ProteinStrategy()
             };
-            _model = new StrategyModel(CalculateProteins, CalculateCarbohydrates, CalculateFats, allowedValue);
+        
             _dietProvider = new DietProvider(list);
             _bestItems = new List<Dish>();
         }
 
-        public void MakeAllSets(List<Dish> items, DietStrategy strategy)
+        public void MakeAllSets(List<Dish> items, DietStrategy strategy, double allowedValue)
         {
             if (items.Count > 0)
             {
                 _bestItems = _dietProvider.GetDietStrategy(strategy)
-                    .CheckSet(_model, items, _bestItems, ref _bestSecondValue, ref _bestFirstValue);
+                    .CheckSet(allowedValue, items, _bestItems, ref _bestSecondValue, ref _bestFirstValue);
             }
 
             for (var i = 0; i < items.Count; i++)
@@ -43,23 +40,8 @@ namespace Algorithm
 
                 newSet.RemoveAt(i);
 
-                MakeAllSets(newSet, strategy);
+                MakeAllSets(newSet, strategy, allowedValue);
             }
-
-        }
-
-        private double CalculateProteins(IEnumerable<Dish> items)
-        {
-            return items.Sum(i => i.ProteinsPer100Grams);
-        }
-
-        private double CalculateCarbohydrates(IEnumerable<Dish> items)
-        {
-            return items.Sum(i => i.CarbohydratesPer100Grams);
-        }
-        private double CalculateFats(IEnumerable<Dish> items)
-        {
-            return items.Sum(i => i.FatsPer100Grams);
         }
 
         public List<Dish> GetBestSet()

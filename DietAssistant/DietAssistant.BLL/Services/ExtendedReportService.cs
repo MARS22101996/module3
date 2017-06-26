@@ -18,7 +18,7 @@ namespace DietAssistant.BLL.Services
       
         public ExtendedReportService(IUnitOfWork unitOfWork)
         {
-            _unitOfWork = unitOfWork;          
+            _unitOfWork = unitOfWork;
         }
 
         public ReportByType GetAverageDailyReportByBodyType(DateTime date, BodyType bodyType)
