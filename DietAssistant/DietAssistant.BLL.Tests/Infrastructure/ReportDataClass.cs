@@ -29,6 +29,61 @@ namespace DietAssistant.BLL.Tests.Infrastructure
             }
         }
 
+        public IEnumerable<Dish> GetDishesForDiet
+        {
+            get
+            {
+                yield return new Dish
+                {
+                    Id = 1,
+                    Name = "test1",
+                    CarbohydratesPer100Grams = 30,
+                    FatsPer100Grams = 10,
+                    ProteinsPer100Grams = 60
+                };
+                yield return new Dish
+                {
+                    Id = 2,
+                    Name = "test2",
+                    CarbohydratesPer100Grams = 30,
+                    FatsPer100Grams = 25,
+                    ProteinsPer100Grams = 45
+                };
+                yield return new Dish
+                {
+                    Id = 3,
+                    Name = "test3",
+                    CarbohydratesPer100Grams = 50,
+                    FatsPer100Grams = 20,
+                    ProteinsPer100Grams = 30
+                };
+                yield return new Dish
+                {
+                    Id = 4,
+                    Name = "test4",
+                    CarbohydratesPer100Grams = 50,
+                    FatsPer100Grams = 30,
+                    ProteinsPer100Grams = 20
+                };
+                yield return new Dish
+                {
+                    Id = 5,
+                    Name = "test5",
+                    CarbohydratesPer100Grams = 80,
+                    FatsPer100Grams = 10,
+                    ProteinsPer100Grams = 10
+                };
+                yield return new Dish
+                {
+                    Id = 6,
+                    Name = "test6",
+                    CarbohydratesPer100Grams = 65,
+                    FatsPer100Grams = 20,
+                    ProteinsPer100Grams = 15
+                };
+            }
+        }
+
         public IEnumerable<Report> Reports
         {
             get

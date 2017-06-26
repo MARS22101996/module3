@@ -7,7 +7,7 @@ namespace DietAssistant.BLL.Interfaces
 {
     public interface IDietPlanService
     {
-        void MakeAllSetsOfDishes(List<Dish> items, DietStrategy strategy, double allowedValue);
+        IEnumerable<Dish> MakeAllSetsOfDishes(List<Dish> items, DietStrategy strategy, double allowedValue);
 
         DietPlan GetBestSetOfDishes();
     }

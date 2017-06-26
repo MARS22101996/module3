@@ -24,7 +24,7 @@ namespace DietAssistant.BLL.Services
             _bestItems = new List<Dish>();
         }
 
-        public void MakeAllSetsOfDishes(List<Dish> items, DietStrategy strategy, double allowedValue)
+        public IEnumerable<Dish> MakeAllSetsOfDishes(List<Dish> items, DietStrategy strategy, double allowedValue)
         {
 
             if (items.Count > 0)
@@ -42,6 +42,7 @@ namespace DietAssistant.BLL.Services
                 MakeAllSetsOfDishes(newSet, strategy, allowedValue);
             }
 
+            return _bestItems;
         }
 
         public DietPlan GetBestSetOfDishes()
