@@ -1,115 +1,70 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Algorithm.DietPlanStrategy;
 
 namespace Algorithm
 {
     public class DietPlan
     {
-        private List<Dish> bestItems;
+        private List<Dish> _bestItems;
 
-        private double maxP;
+        private double _bestFirstValue;
 
-        private double bestF;
+        private double _bestSecondValue;
 
-        private double bestC;
+        private readonly StrategyModel _model;
 
-        private readonly NutritionLimits _nutritionLimits;
+        private readonly DietProvider _dietProvider;
 
-        public DietPlan(double _maxP)
+        public DietPlan(double allowedValue)
         {
-            maxP = _maxP;
-            _nutritionLimits = new NutritionLimits();
-            bestItems = new List<Dish>();
+            var list = new List<IDietStrategy>
+            {
+                new CarbohydrateStrategy(),
+                new FatStrategy(),
+                new ProteinStrategy()
+            };
+            _model = new StrategyModel(CalculateProteins, CalculateCarbohydrates, CalculateFats, allowedValue);
+            _dietProvider = new DietProvider(list);
+            _bestItems = new List<Dish>();
         }
 
-        //создание всех наборов перестановок значений
-        public void MakeAllSets(List<Dish> items)
+        public void MakeAllSets(List<Dish> items, DietStrategy strategy)
         {
             if (items.Count > 0)
-                CheckSet(items);
-
-            for (int i = 0; i < items.Count; i++)
             {
-                List<Dish> newSet = new List<Dish>(items);
+                _bestItems = _dietProvider.GetDietStrategy(strategy)
+                    .CheckSet(_model, items, _bestItems, ref _bestSecondValue, ref _bestFirstValue);
+            }
+
+            for (var i = 0; i < items.Count; i++)
+            {
+                var newSet = new List<Dish>(items);
 
                 newSet.RemoveAt(i);
 
-                MakeAllSets(newSet);
+                MakeAllSets(newSet, strategy);
             }
 
         }
 
-        //проверка, является ли данный набор лучшим решением задачи
-        private void CheckSet(List<Dish> items)
+        private double CalculateProteins(IEnumerable<Dish> items)
         {
-            if (!bestItems.Any())
-            {
-                if (CalcProt(items) <= maxP && CalcProt(items)> _nutritionLimits.MinProtein)
-                {
-                    bestItems = items;
-                    bestC = CalcC(items);
-                    bestF = CalcF(items);
-                }
-            }
-            else
-            {
-                var p = CalcProt(items);
-                var c = CalcC(items);
-                var f = CalcF(items);
-                if ((p  <= maxP && p > _nutritionLimits.MinProtein) && (c < bestC && c > _nutritionLimits.MinCarbohydrates && c < _nutritionLimits.MaxCarbohydrates) &&
-                    (f < bestF && f > _nutritionLimits.MinFats && f < _nutritionLimits.MaxFats))
-                {
-                    bestItems = items;
-                    bestC = CalcC(items);
-                    bestF = CalcF(items);
-                }
-            }
+            return items.Sum(i => i.ProteinsPer100Grams);
         }
 
-        //вычисляет общий вес набора предметов
-        private double CalcProt(List<Dish> items)
+        private double CalculateCarbohydrates(IEnumerable<Dish> items)
         {
-            double sumW = 0;
-
-            foreach (Dish i in items)
-            {
-                sumW += i.ProteinsPer100Grams;
-            }
-
-            return sumW;
+            return items.Sum(i => i.CarbohydratesPer100Grams);
         }
-
-        //вычисляет общую стоимость набора предметов
-        private double CalcC(List<Dish> items)
+        private double CalculateFats(IEnumerable<Dish> items)
         {
-            double sumPrice = 0;
-
-            foreach (Dish i in items)
-            {
-                sumPrice += i.CarbohydratesPer100Grams;
-            }
-
-            return sumPrice;
-        }
-        private double CalcF(List<Dish> items)
-        {
-            double sumPrice = 0;
-
-            foreach (Dish i in items)
-            {
-                sumPrice += i.FatsPer100Grams;
-            }
-
-            return sumPrice;
+            return items.Sum(i => i.FatsPer100Grams);
         }
 
-        //возвращает решение задачи (набор предметов)
         public List<Dish> GetBestSet()
         {
-            return bestItems;
+            return _bestItems;
         }
     }
 }
