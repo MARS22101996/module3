@@ -95,8 +95,8 @@ namespace DietAssistant.Tests
         //}
 
         [Test]
-        public void Will_call_save_changes()
-        {             
+        public void Create_CreatesDish_WhenInputIsDish()
+        {
             var dishSet = GetDbSetMock(new List<Dish>());
             _mockContext.Setup(context => context.Set<Dish>()).Returns(dishSet.Object);
             _mockContext.Setup(context => context.Set<Dish>().Add(It.IsAny<Dish>())).Verifiable();
@@ -106,6 +106,21 @@ namespace DietAssistant.Tests
             _mockContext.Verify(x => x.Set<Dish>().Add(It.IsAny<Dish>()));
 
         }
+
+        [Test]
+        public void Create_DeletesDish_WhenDishExists()
+        {
+            var dishSet = GetDbSetMock(new List<Dish>());
+            var dish = new Dish { Id = 1 };
+            _mockContext.Setup(context => context.Set<Dish>()).Returns(dishSet.Object);
+            _mockContext.Setup(context => context.Set<Dish>().Find(It.IsAny<int>())).Returns(dish);
+
+            _uow.Dishes.Delete(dish.Id);
+
+            _mockContext.Verify(x => x.Set<Dish>().Remove(It.IsAny<Dish>()));
+
+        }
+
 
         private static Mock<DbSet<T>> GetDbSetMock<T>(IEnumerable<T> items = null) where T : class
         {
