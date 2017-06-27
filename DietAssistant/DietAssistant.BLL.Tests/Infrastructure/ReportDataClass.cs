@@ -29,11 +29,11 @@ namespace DietAssistant.BLL.Tests.Infrastructure
             }
         }
 
-        public IEnumerable<Dish> GetDishesForDiet
+        public IEnumerable<DishDto> GetDishesForDiet
         {
             get
             {
-                yield return new Dish
+                yield return new DishDto
                 {
                     Id = 1,
                     Name = "test1",
@@ -41,7 +41,7 @@ namespace DietAssistant.BLL.Tests.Infrastructure
                     FatsPer100Grams = 10,
                     ProteinsPer100Grams = 60
                 };
-                yield return new Dish
+                yield return new DishDto
                 {
                     Id = 2,
                     Name = "test2",
@@ -49,7 +49,7 @@ namespace DietAssistant.BLL.Tests.Infrastructure
                     FatsPer100Grams = 25,
                     ProteinsPer100Grams = 45
                 };
-                yield return new Dish
+                yield return new DishDto
                 {
                     Id = 3,
                     Name = "test3",
@@ -57,7 +57,7 @@ namespace DietAssistant.BLL.Tests.Infrastructure
                     FatsPer100Grams = 20,
                     ProteinsPer100Grams = 30
                 };
-                yield return new Dish
+                yield return new DishDto
                 {
                     Id = 4,
                     Name = "test4",
@@ -65,7 +65,7 @@ namespace DietAssistant.BLL.Tests.Infrastructure
                     FatsPer100Grams = 30,
                     ProteinsPer100Grams = 20
                 };
-                yield return new Dish
+                yield return new DishDto
                 {
                     Id = 5,
                     Name = "test5",
@@ -73,7 +73,7 @@ namespace DietAssistant.BLL.Tests.Infrastructure
                     FatsPer100Grams = 10,
                     ProteinsPer100Grams = 10
                 };
-                yield return new Dish
+                yield return new DishDto
                 {
                     Id = 6,
                     Name = "test6",

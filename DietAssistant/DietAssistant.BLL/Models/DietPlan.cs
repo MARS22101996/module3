@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using DietAssistant.Entities;
+using DietAssistant.BLL.Dto;
 
 namespace DietAssistant.BLL.Models
 {
     public class DietPlan
     {
-        public List<Dish> Dishes { get; set; }
+        public List<DishDto> Dishes { get; set; }
 
         public string Warning { get; set; }
     }

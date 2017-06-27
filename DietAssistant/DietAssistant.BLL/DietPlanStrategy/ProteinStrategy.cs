@@ -2,6 +2,7 @@
 using System.Linq;
 using DietAssistant.Core.Enums;
 using DietAssistant.Entities;
+using DietAssistant.BLL.Dto;
 
 namespace DietAssistant.BLL.DietPlanStrategy
 {
@@ -9,7 +10,7 @@ namespace DietAssistant.BLL.DietPlanStrategy
     {
         public DietStrategy Name => DietStrategy.ProteinBased;
 
-        public List<Dish> CheckSet(double allowedValue,  List<Dish> items, List<Dish> bestItems,
+        public List<DishDto> CheckSet(double allowedValue,  List<DishDto> items, List<DishDto> bestItems,
             ref double bestCarboValue, ref double bestFatValue)
         {
             var sum = CalculateAllElements(items);

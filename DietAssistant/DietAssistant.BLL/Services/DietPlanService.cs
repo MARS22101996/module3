@@ -4,13 +4,13 @@ using DietAssistant.BLL.DietPlanStrategy;
 using DietAssistant.BLL.Interfaces;
 using DietAssistant.BLL.Models;
 using DietAssistant.Core.Enums;
-using DietAssistant.Entities;
+using DietAssistant.BLL.Dto;
 
 namespace DietAssistant.BLL.Services
 {
     public class DietPlanService : IDietPlanService
     {
-        private List<Dish> _bestItems;
+        private List<DishDto> _bestItems;
 
         private double _bestFirstValue;
 
@@ -21,10 +21,10 @@ namespace DietAssistant.BLL.Services
         public DietPlanService(IEnumerable<IDietStrategy> diets)
         {
             _dietProvider = new DietProvider(diets);
-            _bestItems = new List<Dish>();
+            _bestItems = new List<DishDto>();
         }
 
-        public IEnumerable<Dish> MakeAllSetsOfDishes(List<Dish> items, DietStrategy strategy, double allowedValue)
+        public IEnumerable<DishDto> MakeAllSetsOfDishes(List<DishDto> items, DietStrategy strategy, double allowedValue)
         {
 
             if (items.Count > 0)
@@ -35,7 +35,7 @@ namespace DietAssistant.BLL.Services
 
             for (var item = 0; item < items.Count; item ++)
             {
-                var newSet = new List<Dish>(items);
+                var newSet = new List<DishDto>(items);
 
                 newSet.RemoveAt(item);
 
@@ -45,7 +45,7 @@ namespace DietAssistant.BLL.Services
             return _bestItems;
         }
 
-        public DietPlan GetDietPlan(List<Dish> bestItems)
+        public DietPlan GetDietPlan(List<DishDto> bestItems)
         {
             var dietPlan = new DietPlan { Dishes = bestItems };
             if (!bestItems.Any())

@@ -80,50 +80,5 @@ namespace DietAssistant.Tests
             Assert.IsNotNull(oldDish);
             Assert.IsNull(newDish);
         }
-
-
-        //[Test]
-        //public void Create_CreatesDish_WhenInputIsDish()
-        //{
-        //    var dishSet = GetDbSetMock(new List<Dish>());
-        //    _mockContext.Setup(context => context.Set<Dish>()).Returns(dishSet.Object);
-        //    _mockContext.Setup(context => context.Set<Dish>().Add(It.IsAny<Dish>())).Verifiable();
-          
-        //    _uow.Dishes.Create(new Dish());
-
-        //    _mockContext.Verify(x => x.Set<Dish>().Add(It.IsAny<Dish>()));
-
-        //}
-
-        //[Test]
-        //public void Create_DeletesDish_WhenDishExists()
-        //{
-        //    var dishSet = GetDbSetMock(new List<Dish>());
-        //    var dish = new Dish { Id = 1 };
-        //    _mockContext.Setup(context => context.Set<Dish>()).Returns(dishSet.Object);
-        //    _mockContext.Setup(context => context.Set<Dish>().Find(It.IsAny<int>())).Returns(dish);
-
-        //    _uow.Dishes.Delete(dish.Id);
-
-        //    _mockContext.Verify(x => x.Set<Dish>().Remove(It.IsAny<Dish>()));
-
-        //}
-
-
-        private static Mock<DbSet<T>> GetDbSetMock<T>(IEnumerable<T> items = null) where T : class
-        {
-            if (items == null)
-            {
-                items = new T[0];
-            }
-
-            var dbSetMock = new Mock<DbSet<T>>();
-            var q = dbSetMock.As<IQueryable<T>>();
-
-            q.Setup(x => x.GetEnumerator()).Returns(items.GetEnumerator);
-
-            return dbSetMock;
-        }
-
     }
 }

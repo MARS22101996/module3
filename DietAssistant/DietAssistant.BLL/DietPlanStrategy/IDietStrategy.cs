@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using DietAssistant.Core.Enums;
-using DietAssistant.Entities;
+using DietAssistant.BLL.Dto;
 
 namespace DietAssistant.BLL.DietPlanStrategy
 {
@@ -8,7 +8,7 @@ namespace DietAssistant.BLL.DietPlanStrategy
     {
         DietStrategy Name { get; }
 
-        List<Dish> CheckSet(double allowedValue, List<Dish> items, List<Dish> bestItems, ref double bestCarboValue,
+        List<DishDto> CheckSet(double allowedValue, List<DishDto> items, List<DishDto> bestItems, ref double bestCarboValue,
             ref double bestFatValue);
     }
 }

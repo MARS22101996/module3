@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DietAssistant.BLL.Models;
-using DietAssistant.Entities;
+using DietAssistant.BLL.Dto;
 
 namespace DietAssistant.BLL.DietPlanStrategy
 {
@@ -14,22 +14,22 @@ namespace DietAssistant.BLL.DietPlanStrategy
             NutritionLimits = new NutritionLimits();
         }
 
-        protected double CalculateProteins(List<Dish> items)
+        protected double CalculateProteins(List<DishDto> items)
         {
             return items.Sum(i => i.ProteinsPer100Grams);
         }
 
-        protected double CalculateCarbohydrates(List<Dish> items)
+        protected double CalculateCarbohydrates(List<DishDto> items)
         {
             return items.Sum(i => i.CarbohydratesPer100Grams);
         }
 
-        protected double CalculateFats(List<Dish> items)
+        protected double CalculateFats(List<DishDto> items)
         {
             return items.Sum(i => i.FatsPer100Grams);
         }
 
-        protected TotalElements CalculateAllElements(List<Dish> items)
+        protected TotalElements CalculateAllElements(List<DishDto> items)
         {
             var total = new TotalElements
             {

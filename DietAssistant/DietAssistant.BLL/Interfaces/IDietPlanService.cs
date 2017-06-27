@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using DietAssistant.Core.Enums;
-using DietAssistant.Entities;
 using DietAssistant.BLL.Models;
+using DietAssistant.BLL.Dto;
 
 namespace DietAssistant.BLL.Interfaces
 {
     public interface IDietPlanService
     {
-        IEnumerable<Dish> MakeAllSetsOfDishes(List<Dish> items, DietStrategy strategy, double allowedValue);
+        IEnumerable<DishDto> MakeAllSetsOfDishes(List<DishDto> items, DietStrategy strategy, double allowedValue);
 
-        DietPlan GetDietPlan(List<Dish> items);
+        DietPlan GetDietPlan(List<DishDto> items);
     }
 }

@@ -7,7 +7,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using DietAssistant.Entities;
-
+using DietAssistant.BLL.Dto;
 
 namespace DietAssistant.BLL.Tests.Services
 {
@@ -91,7 +91,7 @@ namespace DietAssistant.BLL.Tests.Services
         [Test]
         public void GetDietPlan_ReturnsEmptyDietPlan_WhenPlanDoesNotExist()
         {
-            var dietPlan = _sut.GetDietPlan(new List<Dish>());
+            var dietPlan = _sut.GetDietPlan(new List<DishDto>());
 
             Assert.AreEqual(dietPlan.Dishes.Count, 0);
         }
@@ -107,7 +107,7 @@ namespace DietAssistant.BLL.Tests.Services
         [Test]
         public void GetDietPlan_ReturnsDietPlanWithWarning_WhenPlanDoesNotExist()
         {
-            var dietPlan = _sut.GetDietPlan(new List<Dish>());
+            var dietPlan = _sut.GetDietPlan(new List<DishDto>());
 
             Assert.IsNotNull(dietPlan.Warning);
         }
