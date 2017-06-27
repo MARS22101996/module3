@@ -14,7 +14,7 @@ namespace DietAssistant.Context
 
             var users = AssignUsers();
 
-            var userDishes = AssignUserDishes(dishes);
+            var userDishes = AssignUserDishes();
 
             var reports = AssignReports();
 
@@ -89,21 +89,21 @@ namespace DietAssistant.Context
             };
         }
 
-        private static List<UserDish> AssignUserDishes(List<Dish> dishes)
+        private static List<UserDish> AssignUserDishes()
         {
             return new List<UserDish>
             {
                 new UserDish
                 {
                     Date = DateTime.UtcNow,
-                    Dish = dishes[0],
+                    Dish = new Dish(),
                     Grams = 200,
                     UserId = 1,
                 },
                 new UserDish
                 {
                     Date = DateTime.UtcNow,
-                    Dish = dishes[1],
+                    Dish = new Dish(),
                     Grams = 200,
                     UserId = 1
                 }
