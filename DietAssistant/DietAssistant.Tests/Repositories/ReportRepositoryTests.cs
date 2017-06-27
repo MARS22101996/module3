@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace DietAssistant.Tests
+namespace DietAssistant.Repositories.Tests
 {
     public class ReportRepositoryTests
     {
@@ -47,7 +47,6 @@ namespace DietAssistant.Tests
             _mockContext.Verify(x => x.Set<Report>().Remove(It.IsAny<Report>()));
 
         }
-
 
         private static Mock<DbSet<T>> GetDbSetMock<T>(IEnumerable<T> items = null) where T : class
         {

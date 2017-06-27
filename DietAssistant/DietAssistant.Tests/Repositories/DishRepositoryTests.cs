@@ -1,13 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using DietAssistant.Context;
 using DietAssistant.Entities;
 using DietAssistant.UnitOfWorks;
-using Moq;
 using NUnit.Framework;
 
-namespace DietAssistant.Tests
+namespace DietAssistant.Repositories.Tests
 {
     [TestFixture]
     public class DishRepositoryTests
