@@ -18,11 +18,11 @@ namespace DietAssistant.BLL.Tests.Infrastructure
                 {
                     CarbohydratesPer100Grams = 9,
                     FatsPer100Grams = 9,
-                    ProteinsPer100Grams = 9
+                    ProteinsPer100Grams = 35
                 };
                 yield return new Dish
                 {
-                    CarbohydratesPer100Grams = 30,
+                    CarbohydratesPer100Grams = 60,
                     FatsPer100Grams = 30,
                     ProteinsPer100Grams = 30
                 };
@@ -107,14 +107,14 @@ namespace DietAssistant.BLL.Tests.Infrastructure
                 {
                     Date = date,
                     Dish = dishes[0],
-                    Grams = 100,
+                    Grams = 200,
                     UserId = userId,
                 },
                 new UserDish
                 {
                     Date = date,
                     Dish = dishes[1],
-                    Grams = 100,
+                    Grams = 200,
                     UserId = userId
                 }
             };

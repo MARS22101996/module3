@@ -4,7 +4,7 @@ using DietAssistant.Entities;
 
 namespace DietAssistant.BLL.DietPlanStrategy
 {
-    public interface IDietStrategy 
+    public interface IDietStrategy
     {
         DietStrategy Name { get; }
 

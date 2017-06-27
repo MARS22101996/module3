@@ -9,6 +9,6 @@ namespace DietAssistant.BLL.Interfaces
     {
         IEnumerable<Dish> MakeAllSetsOfDishes(List<Dish> items, DietStrategy strategy, double allowedValue);
 
-        DietPlan GetBestSetOfDishes();
+        DietPlan GetDietPlan(List<Dish> items);
     }
 }

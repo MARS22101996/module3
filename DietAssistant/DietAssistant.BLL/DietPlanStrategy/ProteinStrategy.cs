@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using DietAssistant.BLL.Models;
 using DietAssistant.Core.Enums;
 using DietAssistant.Entities;
-using Algorithm.DietPlanStrategy;
 
 namespace DietAssistant.BLL.DietPlanStrategy
 {
@@ -14,31 +12,30 @@ namespace DietAssistant.BLL.DietPlanStrategy
         public List<Dish> CheckSet(double allowedValue,  List<Dish> items, List<Dish> bestItems,
             ref double bestCarboValue, ref double bestFatValue)
         {
-            var proteinSum = CalculateProteins(items);
-            var fatSum = CalculateFats(items);
-            var carboSum = CalculateCarbohydrates(items);
+            var sum = CalculateAllElements(items);
+
             if (!bestItems.Any())
             {
-                if (proteinSum <= allowedValue && proteinSum > NutritionLimits.MinProtein &&
-                    carboSum > NutritionLimits.MinCarbohydrates &&
-                    carboSum < NutritionLimits.MaxCarbohydrates &&
-                    fatSum > NutritionLimits.MinFats && fatSum < NutritionLimits.MaxFats)
+                if (sum.ProteinsSum <= allowedValue && sum.ProteinsSum > NutritionLimits.MinProtein &&
+                    sum.CarboSum > NutritionLimits.MinCarbohydrates &&
+                    sum.CarboSum < NutritionLimits.MaxCarbohydrates &&
+                    sum.FatsSum > NutritionLimits.MinFats && sum.FatsSum < NutritionLimits.MaxFats)
                 {
                     bestItems = items;
-                    bestCarboValue = carboSum;
-                    bestFatValue = fatSum;
+                    bestCarboValue = sum.CarboSum;
+                    bestFatValue = sum.FatsSum;
                 }
             }
             else
             {
-                if (proteinSum <= allowedValue && proteinSum > NutritionLimits.MinProtein
-                    && carboSum < bestCarboValue && carboSum > NutritionLimits.MinCarbohydrates &&
-                    carboSum < NutritionLimits.MaxCarbohydrates &&
-                    fatSum < bestFatValue && fatSum > NutritionLimits.MinFats && fatSum < NutritionLimits.MaxFats)
+                if (sum.ProteinsSum <= allowedValue && sum.ProteinsSum > NutritionLimits.MinProtein
+                    && sum.CarboSum < bestCarboValue && sum.CarboSum > NutritionLimits.MinCarbohydrates &&
+                    sum.CarboSum < NutritionLimits.MaxCarbohydrates &&
+                    sum.FatsSum < bestFatValue && sum.FatsSum > NutritionLimits.MinFats && sum.FatsSum < NutritionLimits.MaxFats)
                 {
                     bestItems = items;
-                    bestCarboValue = carboSum;
-                    bestFatValue = fatSum;
+                    bestCarboValue = sum.CarboSum;
+                    bestFatValue = sum.FatsSum;
                 }
             }
             return bestItems;

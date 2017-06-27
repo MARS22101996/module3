@@ -67,7 +67,7 @@
     <Compile Include="Models\DietPlan.cs" />
     <Compile Include="Models\NutritionLimits.cs" />
     <Compile Include="Models\ReportByType.cs" />
-    <Compile Include="Models\StrategyModel.cs" />
+    <Compile Include="Models\TotalElements.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DietPlanService.cs" />
     <Compile Include="Services\DishUserService.cs" />

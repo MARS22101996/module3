@@ -33,11 +33,11 @@ namespace DietAssistant.BLL.Services
                     .CheckSet(allowedValue, items, _bestItems, ref _bestSecondValue, ref _bestFirstValue);
             }
 
-            for (var i = 0; i < items.Count; i++)
+            for (var item = 0; item < items.Count; item ++)
             {
                 var newSet = new List<Dish>(items);
 
-                newSet.RemoveAt(i);
+                newSet.RemoveAt(item);
 
                 MakeAllSetsOfDishes(newSet, strategy, allowedValue);
             }
@@ -45,12 +45,13 @@ namespace DietAssistant.BLL.Services
             return _bestItems;
         }
 
-        public DietPlan GetBestSetOfDishes()
+        public DietPlan GetDietPlan(List<Dish> bestItems)
         {
-            var dietPlan = new DietPlan { Dishes = _bestItems };
-            if (!_bestItems.Any())
+            var dietPlan = new DietPlan { Dishes = bestItems };
+            if (!bestItems.Any())
             {
-                dietPlan.Warning = "it is impossible to make a diet with such input values. It violates the daily rate.";
+                dietPlan.Warning =
+                    "It is impossible to make a diet with such input values. It violates the daily rate.";
             }
             return dietPlan;
         }

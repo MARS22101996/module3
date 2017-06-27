@@ -75,9 +75,9 @@ namespace DietAssistant.BLL.Tests.Services
         [Test]
         public void GetReportForUser_ReturnsReportWithRightSum_WhenDataExists()
         {
-            const int sumOfCarbonates = 39;
-            const int sumOfFats = 39;
-            const int sumOfProteins = 39;
+            const int sumOfCarbonates = 138;
+            const int sumOfFats = 78;
+            const int sumOfProteins = 130;
             _unitOfWorkMock.Setup(unitOfWork => unitOfWork.UserDishes.Find(It.IsAny<Func<UserDish, bool>>()))
                 .Returns(_testData.GetUserDishes(_testDishes, DateTime.UtcNow, _testUser.Id).AsQueryable);
 
