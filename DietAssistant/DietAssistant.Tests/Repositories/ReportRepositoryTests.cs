@@ -1,5 +1,6 @@
 ﻿using DietAssistant.Context;
 using DietAssistant.Entities;
+using DietAssistant.Tests;
 using DietAssistant.UnitOfWorks;
 using Moq;
 using NUnit.Framework;
@@ -9,7 +10,7 @@ using System.Linq;
 
 namespace DietAssistant.Repositories.Tests
 {
-    public class ReportRepositoryTests
+    public class ReportRepositoryTests : TestBase
     {
         private UnitOfWork _uow;
         private Mock<DietAssistantContext> _mockContext;
@@ -46,21 +47,6 @@ namespace DietAssistant.Repositories.Tests
 
             _mockContext.Verify(x => x.Set<Report>().Remove(It.IsAny<Report>()));
 
-        }
-
-        private static Mock<DbSet<T>> GetDbSetMock<T>(IEnumerable<T> items = null) where T : class
-        {
-            if (items == null)
-            {
-                items = new T[0];
-            }
-
-            var dbSetMock = new Mock<DbSet<T>>();
-            var q = dbSetMock.As<IQueryable<T>>();
-
-            q.Setup(x => x.GetEnumerator()).Returns(items.GetEnumerator);
-
-            return dbSetMock;
         }
     }
 }

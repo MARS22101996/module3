@@ -4,12 +4,10 @@ using DietAssistant.UnitOfWorks;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
 
 namespace DietAssistant.Tests.Repositories
 {
-    public class UserDishRepositoryTests
+    public class UserDishRepositoryTests : TestBase
     {
         private UnitOfWork _uow;
         private Mock<DietAssistantContext> _mockContext;
@@ -33,19 +31,17 @@ namespace DietAssistant.Tests.Repositories
             _mockContext.Verify(x => x.Set<UserDish>().Add(It.IsAny<UserDish>()));
         }
 
-        private static Mock<DbSet<T>> GetDbSetMock<T>(IEnumerable<T> items = null) where T : class
+        [Test]
+        public void Create_DeletesUserDish_WhenUserDishExists()
         {
-            if (items == null)
-            {
-                items = new T[0];
-            }
+            var userDishSet = GetDbSetMock(new List<UserDish>());
+            var userDish = new UserDish { Id = 1 };
+            _mockContext.Setup(context => context.Set<UserDish>()).Returns(userDishSet.Object);
+            _mockContext.Setup(context => context.Set<UserDish>().Find(It.IsAny<int>())).Returns(userDish);
 
-            var dbSetMock = new Mock<DbSet<T>>();
-            var q = dbSetMock.As<IQueryable<T>>();
+            _uow.UserDishes.Delete(userDish.Id);
 
-            q.Setup(x => x.GetEnumerator()).Returns(items.GetEnumerator);
-
-            return dbSetMock;
+            _mockContext.Verify(x => x.Set<UserDish>().Remove(It.IsAny<UserDish>()));
         }
     }
 }
