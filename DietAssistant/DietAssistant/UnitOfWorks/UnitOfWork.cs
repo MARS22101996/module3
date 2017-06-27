@@ -8,7 +8,7 @@ namespace DietAssistant.UnitOfWorks
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private  DietAssistantContext _db;
+        private DietAssistantContext _db;
 
         private IRepository<User> _userRepository;
 
@@ -18,10 +18,9 @@ namespace DietAssistant.UnitOfWorks
 
         private IRepository<Report> _reportRepository;
 
-        public UnitOfWork()
-        {
-            string mssqlConnectionString = ConfigurationManager.ConnectionStrings["CDPDatabase"].ToString();
-            _db = new DietAssistantContext(mssqlConnectionString);
+        public UnitOfWork(DietAssistantContext context)
+        {        
+            _db = context;
         }
 
         public IRepository<User> Users => _userRepository ?? (_userRepository = new CommonRepository<User>(_db));

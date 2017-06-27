@@ -11,10 +11,6 @@ namespace DietAssistant.Context
         }
 
         public DietAssistantContext()
-        {
-        }
-
-        public DietAssistantContext(string connectionString)
             : base("name=CDPDatabase")
         {
         }
