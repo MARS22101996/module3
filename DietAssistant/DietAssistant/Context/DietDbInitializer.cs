@@ -14,17 +14,21 @@ namespace DietAssistant.Context
 
             var users = AssignUsers();
 
-            var userDishes = AssignUserDishes();
-
-            var reports = AssignReports();
-
             db.Dishes.AddRange(dishes);
 
             db.Users.AddRange(users);
 
-            db.Reports.AddRange(reports);
+            db.SaveChanges();
 
-            db.UserDishes.AddRange(userDishes);
+            var dish = db.Dishes.Find(1);
+
+            var user = db.Users.Find(1);
+
+            var userDishes = AssignUserDishes(dish, user);
+
+            var reports = AssignReports();
+
+            db.Reports.AddRange(reports);
         }
 
         private static List<User> AssignUsers()
@@ -89,23 +93,27 @@ namespace DietAssistant.Context
             };
         }
 
-        private static List<UserDish> AssignUserDishes()
+        private static List<UserDish> AssignUserDishes(Dish dish, User user)
         {
             return new List<UserDish>
             {
                 new UserDish
                 {
                     Date = DateTime.UtcNow,
-                    Dish = new Dish(),
+                    Dish = dish,
                     Grams = 200,
-                    UserId = 1,
+                    UserId = user.Id,
+                    User = user,
+                    DishId = dish.Id
                 },
                 new UserDish
                 {
                     Date = DateTime.UtcNow,
-                    Dish = new Dish(),
+                    Dish = dish,
                     Grams = 200,
-                    UserId = 1
+                    UserId = user.Id,
+                    User = user,
+                    DishId = dish.Id
                 }
             };
         }
