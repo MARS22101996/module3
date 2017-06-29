@@ -79,7 +79,7 @@
       <Project>{96BE9EDB-50DF-49BA-ACF5-BB2244EF42FC}</Project>
       <Name>DietAssistant.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DietAssistant\DietAssistant.DAL.csproj">
+    <ProjectReference Include="..\DietAssistant.DAL\DietAssistant.DAL.csproj">
       <Project>{4B82AE06-22E3-4AD9-8BC5-C12DCACECA43}</Project>
       <Name>DietAssistant.DAL</Name>
     </ProjectReference>

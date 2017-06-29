@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DietAssistant.Core.Enums;
+using DietAssistant.BLL.Infrastructure.Exceptions;
 
 namespace DietAssistant.BLL.DietPlanStrategy
 {
@@ -13,12 +14,12 @@ namespace DietAssistant.BLL.DietPlanStrategy
         {
             _dietStrategies = dietStrategies;
         }    
-        public IDietStrategy GetDietStrategy(DietStrategy payment)
+        public IDietStrategy GetDietStrategy(DietStrategy diet)
         { 
-            var result = _dietStrategies.FirstOrDefault(x => x.Name == payment);
-            if(result==null)
+            var result = _dietStrategies.FirstOrDefault(x => x.Name == diet);
+            if(result == null)
             {
-                throw new Exception();
+                throw new EntityNotFoundException($"Diet strategy {diet.ToString()} was not found", "Strategy");
             }
             return result;
         }
