@@ -1,6 +1,6 @@
 using DietAssistant.BLL.Dto;
 
-namespace DietAssistant.Core.Interfaces
+namespace DietAssistant.BLL.Interfaces
 {
     public interface IRangeValidator
     {

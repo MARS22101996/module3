@@ -1,8 +1,8 @@
 using DietAssistant.BLL.Dto;
+using DietAssistant.BLL.Interfaces;
 using DietAssistant.BLL.Models;
-using DietAssistant.Core.Interfaces;
 
-namespace DietAssistant.Core.Infrastructure.Validators
+namespace DietAssistant.BLL.Validators
 {
     public class CarbohydratesRangeValidator : IRangeValidator
     {

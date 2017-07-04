@@ -8,7 +8,6 @@ using DietAssistant.BLL.Infrastructure.Exceptions;
 using DietAssistant.BLL.Interfaces;
 using DietAssistant.Entities;
 using DietAssistant.BLL.Models;
-using DietAssistant.Core.Interfaces;
 
 namespace DietAssistant.BLL.Services
 {

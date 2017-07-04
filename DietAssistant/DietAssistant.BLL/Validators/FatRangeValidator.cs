@@ -1,6 +1,6 @@
 ﻿using DietAssistant.BLL.Dto;
+using DietAssistant.BLL.Interfaces;
 using DietAssistant.BLL.Models;
-using DietAssistant.Core.Interfaces;
 
 namespace DietAssistant.BLL.Validators
 {

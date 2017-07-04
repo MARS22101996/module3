@@ -11,9 +11,7 @@ using DietAssistant.Entities;
 using DietAssistant.Interfaces;
 using Moq;
 using NUnit.Framework;
-using DietAssistant.Core.Interfaces;
 using DietAssistant.BLL.Models;
-using DietAssistant.Core.Infrastructure.Validators;
 using DietAssistant.BLL.Validators;
 
 namespace DietAssistant.BLL.Tests.Services

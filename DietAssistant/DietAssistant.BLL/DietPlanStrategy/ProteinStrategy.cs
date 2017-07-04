@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DietAssistant.Core.Enums;
-using DietAssistant.Entities;
 using DietAssistant.BLL.Dto;
 
 namespace DietAssistant.BLL.DietPlanStrategy
