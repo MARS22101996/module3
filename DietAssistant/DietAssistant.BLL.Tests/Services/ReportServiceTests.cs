@@ -21,7 +21,7 @@ namespace DietAssistant.BLL.Tests.Services
         private Mock<IUnitOfWork> _unitOfWorkMock;
         private UserDto _testUser;
         private List<Dish> _testDishes;
-        private ReportDataClass _testData;
+        private ReportDataStub _testData;
 
         [SetUp]
         public void SetUp()
@@ -29,7 +29,7 @@ namespace DietAssistant.BLL.Tests.Services
             AutoMapperConfiguration.Configure();
             _unitOfWorkMock = new Mock<IUnitOfWork>();
             _sut = new ReportService(_unitOfWorkMock.Object);
-            _testData = new ReportDataClass();
+            _testData = new ReportDataStub();
             _testUser = _testData.User;
             _testDishes = _testData.GetDishes.ToList();
         }

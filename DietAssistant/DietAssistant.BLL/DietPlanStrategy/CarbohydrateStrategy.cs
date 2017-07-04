@@ -5,7 +5,7 @@ using DietAssistant.BLL.Dto;
 
 namespace DietAssistant.BLL.DietPlanStrategy
 {
-    public class CarbohydrateStrategy : AbstractStrategy, IDietStrategy
+    public class CarbohydrateStrategy : AbstractDietStrategy, IDietStrategy
     {
         public DietStrategy Name => DietStrategy.CarbohydrateBased;
 

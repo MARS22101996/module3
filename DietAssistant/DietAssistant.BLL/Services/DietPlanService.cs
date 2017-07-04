@@ -12,9 +12,9 @@ namespace DietAssistant.BLL.Services
     {
         private List<DishDto> _bestItems;
 
-        private double _bestFirstValue;
+        private double _bestPrimaryValue;
 
-        private double _bestSecondValue;
+        private double _bestSecondaryValue;
 
         private readonly DietProvider _dietProvider;
 
@@ -30,7 +30,7 @@ namespace DietAssistant.BLL.Services
             if (items.Count > 0)
             {
                 _bestItems = _dietProvider.GetDietStrategy(strategy)
-                    .CheckSet(allowedValue, items, _bestItems, ref _bestSecondValue, ref _bestFirstValue);
+                    .CheckSet(allowedValue, items, _bestItems, ref _bestSecondaryValue, ref _bestPrimaryValue);
             }
 
             for (var item = 0; item < items.Count; item ++)

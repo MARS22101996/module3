@@ -14,7 +14,7 @@ namespace DietAssistant.BLL.Tests.Services
     public class DietPlanServiceTests
     {
         private DietPlanService _sut;
-        private ReportDataClass _testData;
+        private ReportDataStub _testData;
 
         [SetUp]
         public void SetUp()
@@ -27,7 +27,7 @@ namespace DietAssistant.BLL.Tests.Services
                 new ProteinStrategy()
             };
             _sut = new DietPlanService(listOfStrategies);
-            _testData = new ReportDataClass();
+            _testData = new ReportDataStub();
         }
 
         [Test]

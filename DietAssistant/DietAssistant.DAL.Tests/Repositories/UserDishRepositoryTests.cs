@@ -3,11 +3,11 @@ using DietAssistant.Entities;
 using DietAssistant.UnitOfWorks;
 using Moq;
 using NUnit.Framework;
-using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace DietAssistant.Tests.Repositories
 {
-    public class UserDishRepositoryTests : TestBase
+    public class UserDishRepositoryTests
     {
         private UnitOfWork _uow;
         private Mock<DietAssistantContext> _mockContext;
@@ -22,7 +22,7 @@ namespace DietAssistant.Tests.Repositories
         [Test]
         public void Create_CreatesUserDish_WhenInputIsUserDish()
         {
-            var reportSet = GetDbSetMock(new List<UserDish>());
+            var reportSet = new Mock<DbSet<UserDish>>();
             _mockContext.Setup(context => context.Set<UserDish>()).Returns(reportSet.Object);
             _mockContext.Setup(context => context.Set<UserDish>().Add(It.IsAny<UserDish>())).Verifiable();
 
@@ -34,7 +34,7 @@ namespace DietAssistant.Tests.Repositories
         [Test]
         public void Create_DeletesUserDish_WhenUserDishExists()
         {
-            var userDishSet = GetDbSetMock(new List<UserDish>());
+            var userDishSet = new Mock<DbSet<UserDish>>();
             var userDish = new UserDish { Id = 1 };
             _mockContext.Setup(context => context.Set<UserDish>()).Returns(userDishSet.Object);
             _mockContext.Setup(context => context.Set<UserDish>().Find(It.IsAny<int>())).Returns(userDish);

@@ -8,7 +8,6 @@ using DietAssistant.BLL.Interfaces;
 using DietAssistant.BLL.Models;
 using DietAssistant.Core.Enums;
 using DietAssistant.Interfaces;
-using DietAssistant.Entities;
 
 namespace DietAssistant.BLL.Services
 {
@@ -35,9 +34,9 @@ namespace DietAssistant.BLL.Services
             var reportByType = new ReportByType
             {
                 Date = date,
-                AverageCarbohydrates = CalculatesAverageCarbohydrates(dailyReports),
-                AverageFats = CalculatesAverageFats(dailyReports),
-                AverageProteins = CalculatesAverageProteins(dailyReports),
+                AverageCarbohydrates = dailyReports.Average(x => x.Carbohydrates),
+                AverageFats = dailyReports.Average(x => x.Fats),
+                AverageProteins = dailyReports.Average(x => x.Proteins),
                 Type = bodyType
             };
 
@@ -51,25 +50,6 @@ namespace DietAssistant.BLL.Services
             var dailyReportsDto = Mapper.Map<IEnumerable<ReportDto>>(dailyReports);
 
             return dailyReportsDto;
-        }
-
-
-        private double CalculatesAverageCarbohydrates(IEnumerable<Report> reports)
-        {
-            var averageCarbohydrates = reports.Average(x => x.Carbohydrates);
-            return averageCarbohydrates;
-        }
-
-        private double CalculatesAverageFats(IEnumerable<Report> reports)
-        {
-            var averageFats = reports.Average(x => x.Fats);
-            return averageFats;
-        }
-
-        private double CalculatesAverageProteins(IEnumerable<Report> reports)
-        {
-            var averageProteins = reports.Average(x => x.Proteins);
-            return averageProteins;
         }
     }
 }

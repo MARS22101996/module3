@@ -1,14 +1,13 @@
 ﻿using DietAssistant.Context;
 using DietAssistant.Entities;
-using DietAssistant.Tests;
 using DietAssistant.UnitOfWorks;
 using Moq;
 using NUnit.Framework;
-using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace DietAssistant.Repositories.Tests
 {
-    public class ReportRepositoryTests : TestBase
+    public class ReportRepositoryTests
     {
         private UnitOfWork _uow;
         private Mock<DietAssistantContext> _mockContext;
@@ -23,7 +22,7 @@ namespace DietAssistant.Repositories.Tests
         [Test]
         public void Create_CreatesReport_WhenInputIsReport()
         {
-            var reportSet = GetDbSetMock(new List<Report>());
+            var reportSet = new Mock<DbSet<Report>>();
             _mockContext.Setup(context => context.Set<Report>()).Returns(reportSet.Object);
             _mockContext.Setup(context => context.Set<Report>().Add(It.IsAny<Report>())).Verifiable();
 
@@ -36,7 +35,7 @@ namespace DietAssistant.Repositories.Tests
         [Test]
         public void Create_DeletesReport_WhenReportExists()
         {
-            var reportSet = GetDbSetMock(new List<Report>());
+            var reportSet = new Mock<DbSet<Report>>();
             var report = new Report { Id = 1 };
             _mockContext.Setup(context => context.Set<Report>()).Returns(reportSet.Object);
             _mockContext.Setup(context => context.Set<Report>().Find(It.IsAny<int>())).Returns(report);

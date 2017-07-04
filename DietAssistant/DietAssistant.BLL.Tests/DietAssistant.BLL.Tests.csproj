@@ -65,7 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\ReportDataClass.cs" />
+    <Compile Include="Infrastructure\ReportDataStub.cs" />
     <Compile Include="Services\DietPlanServiceTests.cs" />
     <Compile Include="Services\DishUserServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

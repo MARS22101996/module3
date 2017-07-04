@@ -19,7 +19,7 @@ namespace DietAssistant.BLL.Tests.Services
     {
         private IExtendedReportService _sut;
         private Mock<IUnitOfWork> _unitOfWorkMock;
-        private ReportDataClass _testData;
+        private ReportDataStub _testData;
 
         [SetUp]
         public void SetUp()
@@ -27,7 +27,7 @@ namespace DietAssistant.BLL.Tests.Services
             AutoMapperConfiguration.Configure();
             _unitOfWorkMock = new Mock<IUnitOfWork>();
             _sut = new ExtendedReportService(_unitOfWorkMock.Object);
-            _testData = new ReportDataClass();
+            _testData = new ReportDataStub();
         }
 
 

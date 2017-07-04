@@ -4,11 +4,11 @@ using DietAssistant.UnitOfWorks;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
-
+using System.Data.Entity;
 
 namespace DietAssistant.Tests.Repositories
 {
-    public class UserRepositoryTests : TestBase
+    public class UserRepositoryTests
     {
         private UnitOfWork _uow;
         private Mock<DietAssistantContext> _mockContext;
@@ -23,7 +23,7 @@ namespace DietAssistant.Tests.Repositories
         [Test]
         public void Create_CreatesUser_WhenInputIsUser()
         {
-            var reportSet = GetDbSetMock(new List<User>());
+            var reportSet = new Mock<DbSet<User>>();
             _mockContext.Setup(context => context.Set<User>()).Returns(reportSet.Object);
             _mockContext.Setup(context => context.Set<User>().Add(It.IsAny<User>())).Verifiable();
 
