@@ -8,6 +8,7 @@ using DietAssistant.BLL.Infrastructure.Exceptions;
 using DietAssistant.BLL.Interfaces;
 using DietAssistant.Entities;
 using DietAssistant.BLL.Models;
+using DietAssistant.Core.Interfaces;
 
 namespace DietAssistant.BLL.Services
 {
@@ -15,11 +16,13 @@ namespace DietAssistant.BLL.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly NutritionLimits _nutritionLimits;
+        private readonly IEnumerable<IRangeValidator> _rangeValidators;
 
-        public ReportService(IUnitOfWork unitOfWork)
+        public ReportService(IUnitOfWork unitOfWork, IEnumerable<IRangeValidator> rangeValidators)
         {
             _unitOfWork = unitOfWork;
             _nutritionLimits = new NutritionLimits();
+            _rangeValidators = rangeValidators;
         }
 
         public ReportDto GetReportForUser(DateTime date, UserDto userDto)
@@ -36,18 +39,14 @@ namespace DietAssistant.BLL.Services
             var report = new ReportDto
             {
                 Date = date,
-                Carbohydrates = CalculatesTotalCarbohydrates(dishesOfUser),
-                Fats = CalculatesTotalFats(dishesOfUser),
-                Proteins = CalculatesTotalProteins(dishesOfUser),
+                Carbohydrates = dishesOfUser.Sum(x => x.Dish.CarbohydratesPer100Grams * (x.Grams / 100.0)),
+                Fats = dishesOfUser.Sum(x => x.Dish.FatsPer100Grams * (x.Grams / 100.0)),
+                Proteins = dishesOfUser.Sum(x => x.Dish.ProteinsPer100Grams * (x.Grams / 100.0)),
                 UserId = userDto.Id,
                 User = userDto
             };
 
-            CheckByCarbohydrates(report);
-
-            CheckByFats(report);
-
-            CheckByProtein(report);
+            GetWarnings(report, _rangeValidators);
 
             return report;
         }
@@ -69,52 +68,11 @@ namespace DietAssistant.BLL.Services
             return dishesOfUser;
         }
 
-        private double CalculatesTotalCarbohydrates(IEnumerable<UserDish> dishesOfUser)
+        private void GetWarnings(ReportDto report, IEnumerable<IRangeValidator> validators)
         {
-            var totalCarbohydrates = dishesOfUser.Sum(x => x.Dish.CarbohydratesPer100Grams * (x.Grams / 100.0));
-            return totalCarbohydrates;
-        }
-
-        private double CalculatesTotalFats(IEnumerable<UserDish> dishesOfUser)
-        {
-            var totalFats = dishesOfUser.Sum(x => x.Dish.FatsPer100Grams * (x.Grams / 100.0));
-            return totalFats;
-        }
-
-        private double CalculatesTotalProteins(IEnumerable<UserDish> dishesOfUser)
-        {
-            var totalProteins = dishesOfUser.Sum(x => x.Dish.ProteinsPer100Grams * (x.Grams / 100.0));
-            return totalProteins;
-        }
-
-        private void CheckByCarbohydrates(ReportDto report)
-        {
-            if (report.Carbohydrates < _nutritionLimits.MinCarbohydrates ||
-                report.Carbohydrates > _nutritionLimits.MaxCarbohydrates)
+            foreach(var validator in validators)
             {
-                report.WarningByCarbohydrates =
-                    $"User {report.User.FirstName} {report.User.LastName} violated the daily rate daily rate of carbohydrates." +
-                    $" Min norm is {_nutritionLimits.MinCarbohydrates}. Max norm is {_nutritionLimits.MaxCarbohydrates} ";
-            }
-        }
-
-        private void CheckByFats(ReportDto report)
-        {
-            if (report.Fats < _nutritionLimits.MinFats || report.Fats > _nutritionLimits.MaxFats)
-            {
-                report.WarningByFats =
-                    $"User {report.User.FirstName} {report.User.LastName} violated the daily rate daily rate of fats." +
-                    $" Min norm is {_nutritionLimits.MinFats}. Max norm is {_nutritionLimits.MaxFats} ";
-            }
-        }
-
-        private void CheckByProtein(ReportDto report)
-        {
-            if (report.Proteins < _nutritionLimits.MinProtein || report.Proteins > _nutritionLimits.MaxProtein)
-            {
-                report.WarningByProteins =
-                    $"User {report.User.FirstName} {report.User.LastName} violated the daily rate daily rate of proteins." +
-                    $" Min norm is {_nutritionLimits.MinProtein}. Max norm is {_nutritionLimits.MaxProtein} ";
+                validator.Validate(report);
             }
         }
     }

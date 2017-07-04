@@ -11,6 +11,10 @@ using DietAssistant.Entities;
 using DietAssistant.Interfaces;
 using Moq;
 using NUnit.Framework;
+using DietAssistant.Core.Interfaces;
+using DietAssistant.BLL.Models;
+using DietAssistant.Core.Infrastructure.Validators;
+using DietAssistant.BLL.Validators;
 
 namespace DietAssistant.BLL.Tests.Services
 {
@@ -26,9 +30,16 @@ namespace DietAssistant.BLL.Tests.Services
         [SetUp]
         public void SetUp()
         {
+            var nutritionLimits = new NutritionLimits();
+            var listOfValidators = new List<IRangeValidator>
+            {
+                new CarbohydratesRangeValidator(nutritionLimits),
+                new FatRangeValidator(nutritionLimits),
+                new ProteinRangeValidator(nutritionLimits),
+            };
             AutoMapperConfiguration.Configure();
             _unitOfWorkMock = new Mock<IUnitOfWork>();
-            _sut = new ReportService(_unitOfWorkMock.Object);
+            _sut = new ReportService(_unitOfWorkMock.Object, listOfValidators);
             _testData = new ReportDataStub();
             _testUser = _testData.User;
             _testDishes = _testData.GetDishes.ToList();
