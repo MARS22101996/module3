@@ -70,7 +70,7 @@ namespace Shop.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View("Login", model);
             }
 
             // This doesn't count login failures towards account lockout
@@ -445,10 +445,10 @@ namespace Shop.Controllers
 
         private ActionResult RedirectToLocal(string returnUrl)
         {
-            if (Url.IsLocalUrl(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
+            //if (Url.IsLocalUrl(returnUrl))
+            //{
+            //    return Redirect(returnUrl);
+            //}
             return RedirectToAction("Index", "Home");
         }
 

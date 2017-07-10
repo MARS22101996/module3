@@ -154,18 +154,24 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Login.feature.cs">
+    <Compile Include="Features\LoginAllFieldsEntered.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Login.feature</DependentUpon>
+      <DependentUpon>LoginAllFieldsEntered.feature</DependentUpon>
     </Compile>
-    <Compile Include="LoginSteps.cs" />
-    <Compile Include="LogIn_Feature.feature.cs">
+    <Compile Include="Features\LoginPasswordEntered.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LogIn_Feature.feature</DependentUpon>
+      <DependentUpon>LoginPasswordEntered.feature</DependentUpon>
     </Compile>
-    <Compile Include="LogIn_FeatureSteps.cs" />
+    <Compile Include="Features\LoginEmailEntered.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoginEmailEntered.feature</DependentUpon>
+    </Compile>
+    <Compile Include="TestDefinitions\LoginAllFieldsEnteredSteps.cs" />
+    <Compile Include="TestDefinitions\LoginPasswordEnteredSteps.cs" />
+    <Compile Include="TestDefinitions\LoginEmailEnteredSteps.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -174,16 +180,20 @@
     <None Include="Default.srprofile">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Login.feature">
+    <None Include="Features\LoginAllFieldsEntered.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>Login.feature.cs</LastGenOutput>
+      <LastGenOutput>LoginAllFieldsEntered.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\LoginPasswordEntered.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>LoginPasswordEntered.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\LoginEmailEntered.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>LoginEmailEntered.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="runtests.cmd" />
-    <None Include="LogIn_Feature.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>LogIn_Feature.feature.cs</LastGenOutput>
-    </None>
     <None Include="SpecRunTestProfile.xsd">
       <SubType>Designer</SubType>
     </None>
