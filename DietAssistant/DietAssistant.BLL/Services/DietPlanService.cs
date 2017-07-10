@@ -16,6 +16,8 @@ namespace DietAssistant.BLL.Services
 
         private double _bestSecondaryValue;
 
+        private double _stepToImproveValue = 10;
+
         private readonly DietProvider _dietProvider;
 
         public DietPlanService(IEnumerable<IDietStrategy> diets)
@@ -45,13 +47,17 @@ namespace DietAssistant.BLL.Services
             return _bestItems;
         }
 
-        public DietPlan GetDietPlan(List<DishDto> bestItems)
+        public DietPlan GetDietPlan(List<DishDto> bestItems, DietStrategy strategy, double allowedValue)
         {
             var dietPlan = new DietPlan { Dishes = bestItems };
+            dietPlan.Warning = null;
             if (!bestItems.Any())
             {
                 dietPlan.Warning =
                     "It is impossible to make a diet with such input values. It violates the daily rate.";
+                allowedValue = allowedValue + _stepToImproveValue;
+                _bestItems = MakeAllSetsOfDishes(bestItems, strategy, allowedValue).ToList();
+                dietPlan = GetDietPlan(_bestItems, strategy, allowedValue);
             }
             return dietPlan;
         }
