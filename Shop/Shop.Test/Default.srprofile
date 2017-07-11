@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TestProfile xmlns="http://www.specflow.org/schemas/plus/TestProfile/1.5">
-  <Settings projectName="Shop.Tests" projectId="{a1bf3118-87e1-4950-836b-6218823f2e02}" />
+  <Settings projectName="Shop.Test" projectId="{496968a1-6a53-4678-abe1-0af895d98d99}" />
   <Execution stopAfterFailures="3" testThreadCount="1" testSchedulingMode="Sequential" />
   <!-- For collecting by a SpecRun server update and enable the following element. For using the 
       collected statistics, set testSchedulingMode="Adaptive" attribute on the <Execution> element.
     <Server serverUrl="http://specrunserver:6365" publishResults="true" />
   -->
   <TestAssemblyPaths>
-    <TestAssemblyPath>Shop.Tests.dll</TestAssemblyPath>
+    <TestAssemblyPath>Shop.Test.dll</TestAssemblyPath>
   </TestAssemblyPaths>
   <DeploymentTransformation>
     <Steps>

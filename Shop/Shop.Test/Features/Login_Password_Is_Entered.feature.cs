@@ -10,29 +10,29 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Shop.Tests.Features
+namespace Shop.Test.Features
 {
     using TechTalk.SpecFlow;
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.2.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("LoginEmail1Entered", Description="    In order to access my account\r\n    As a user of the website\r\n    I don`t want" +
-        " to log into the website,\r\n\tif I did not entered my password", SourceFile="Features\\LoginEmailEntered.feature", SourceLine=0)]
-    public partial class LoginEmail1EnteredFeature
+    [TechTalk.SpecRun.FeatureAttribute("Login_Password_Is_Entered", Description="    In order to access my account\r\n    As a user of the website\r\n    I don`t want" +
+        " to log into the website,\r\n\tif I did not enter my email", SourceFile="Features\\Login_Password_Is_Entered.feature", SourceLine=0)]
+    public partial class Login_Password_Is_EnteredFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "LoginEmailEntered.feature"
+#line 1 "Login_Password_Is_Entered.feature"
 #line hidden
         
         [TechTalk.SpecRun.FeatureInitialize()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "LoginEmail1Entered", "    In order to access my account\r\n    As a user of the website\r\n    I don`t want" +
-                    " to log into the website,\r\n\tif I did not entered my password", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Login_Password_Is_Entered", "    In order to access my account\r\n    As a user of the website\r\n    I don`t want" +
+                    " to log into the website,\r\n\tif I did not enter my email", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -63,42 +63,42 @@ namespace Shop.Tests.Features
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void FailedLoginWithoutPassword1(string username, string password, string[] exampleTags)
+        public virtual void FailedLoginWithoutEmail(string password, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "mytag"};
+                    "login"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Failed Login without password1", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Failed Login without email", @__tags);
 #line 8
 this.ScenarioSetup(scenarioInfo);
 #line 9
- testRunner.Given(string.Format("User enter {0} 1", username), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given(string.Format("User enter password {0}", password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 10
- testRunner.When("Click on the LogIn button 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("Click on the button for log in, when email is not entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 11
- testRunner.Then("Login was not processed 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Login was not processed without email", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Failed Login without password1, testuser_1", new string[] {
-                "mytag"}, SourceLine=13)]
-        public virtual void FailedLoginWithoutPassword1_Testuser_1()
+        [TechTalk.SpecRun.ScenarioAttribute("Failed Login without email, Test@123", new string[] {
+                "login"}, SourceLine=13)]
+        public virtual void FailedLoginWithoutEmail_Test123()
         {
 #line 8
-this.FailedLoginWithoutPassword1("testuser_1", "Test@123", ((string[])(null)));
+this.FailedLoginWithoutEmail("Test@123", ((string[])(null)));
 #line hidden
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Failed Login without password1, testuser_2", new string[] {
-                "mytag"}, SourceLine=13)]
-        public virtual void FailedLoginWithoutPassword1_Testuser_2()
+        [TechTalk.SpecRun.ScenarioAttribute("Failed Login without email, Test@153", new string[] {
+                "login"}, SourceLine=13)]
+        public virtual void FailedLoginWithoutEmail_Test153()
         {
 #line 8
-this.FailedLoginWithoutPassword1("testuser_2", "Test@153", ((string[])(null)));
+this.FailedLoginWithoutEmail("Test@153", ((string[])(null)));
 #line hidden
         }
         

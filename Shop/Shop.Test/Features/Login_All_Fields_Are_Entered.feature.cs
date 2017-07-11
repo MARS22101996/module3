@@ -10,29 +10,29 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Shop.Tests.Features
+namespace Shop.Test.Features
 {
     using TechTalk.SpecFlow;
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.2.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("LoginAllFieldsEntered", Description="    In order to access my account\r\n    As a user of the website\r\n    I want to lo" +
-        "g into the website", SourceFile="Features\\LoginAllFieldsEntered.feature", SourceLine=0)]
-    public partial class LoginAllFieldsEnteredFeature
+    [TechTalk.SpecRun.FeatureAttribute("Login_All_Fields_Are_Entered", Description="    In order to access my account\r\n    As a user of the website\r\n    I want to lo" +
+        "g into the website\r\n\tWhen valid password and email are entered", SourceFile="Features\\Login_All_Fields_Are_Entered.feature", SourceLine=0)]
+    public partial class Login_All_Fields_Are_EnteredFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "LoginAllFieldsEntered.feature"
+#line 1 "Login_All_Fields_Are_Entered.feature"
 #line hidden
         
         [TechTalk.SpecRun.FeatureInitialize()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "LoginAllFieldsEntered", "    In order to access my account\r\n    As a user of the website\r\n    I want to lo" +
-                    "g into the website", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Login_All_Fields_Are_Entered", "    In order to access my account\r\n    As a user of the website\r\n    I want to lo" +
+                    "g into the website\r\n\tWhen valid password and email are entered", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -65,31 +65,39 @@ namespace Shop.Tests.Features
         
         public virtual void SuccessfulLoginWithValidCredentials(string username, string password, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Successful Login with Valid Credentials", exampleTags);
-#line 6
-this.ScenarioSetup(scenarioInfo);
-#line 7
- testRunner.Given(string.Format("User enters {0} and {1}", username, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            string[] @__tags = new string[] {
+                    "login"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Successful Login with Valid Credentials", @__tags);
 #line 8
- testRunner.When("Click on the LogIn button, when all fields are entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 9
+ testRunner.Given(string.Format("User enters username {0} and password  {1}", username, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 10
+ testRunner.When("Click on the LogIn button, when all fields are entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 11
  testRunner.Then("Successful Log in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Successful Login with Valid Credentials, testuser_1", SourceLine=11)]
+        [TechTalk.SpecRun.ScenarioAttribute("Successful Login with Valid Credentials, testuser_1", new string[] {
+                "login"}, SourceLine=13)]
         public virtual void SuccessfulLoginWithValidCredentials_Testuser_1()
         {
-#line 6
+#line 8
 this.SuccessfulLoginWithValidCredentials("testuser_1", "Test@123", ((string[])(null)));
 #line hidden
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Successful Login with Valid Credentials, testuser_2", SourceLine=11)]
+        [TechTalk.SpecRun.ScenarioAttribute("Successful Login with Valid Credentials, testuser_2", new string[] {
+                "login"}, SourceLine=13)]
         public virtual void SuccessfulLoginWithValidCredentials_Testuser_2()
         {
-#line 6
+#line 8
 this.SuccessfulLoginWithValidCredentials("testuser_2", "Test@153", ((string[])(null)));
 #line hidden
         }
