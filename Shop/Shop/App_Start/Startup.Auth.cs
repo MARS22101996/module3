@@ -6,6 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Shop.Models;
+using Shops.DAL.Context;
+using Shops.DAL.Entities;
 
 namespace Shop
 {

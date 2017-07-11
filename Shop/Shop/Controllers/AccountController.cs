@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Shop.Models;
+using Shops.DAL.Entities;
 
 namespace Shop.Controllers
 {

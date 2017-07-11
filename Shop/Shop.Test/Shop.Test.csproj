@@ -180,6 +180,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Shops.DAL\Shop.DAL.csproj">
+      <Project>{68EDB83A-593D-4F87-99E4-931593604D94}</Project>
+      <Name>Shop.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shop\Shop.csproj">
       <Project>{795B3D64-2DC9-4244-BBA6-B8C3C34572DC}</Project>
       <Name>Shop</Name>
