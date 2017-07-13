@@ -31,10 +31,10 @@ namespace Shop.Test
             var filterDto = new FilterModel
             {
                 Brands = new List<string> { "Test-Brand-1" , "Test-Brand-1" },
-                SearchString = "tes",
-                SortType = SortType.PriceAsc, 
-                MinPrice = 0,
-                MaxPrice = 100,
+                //SearchString = "tes",
+                //SortType = SortType.PriceAsc, 
+                //MinPrice = 0,
+                //MaxPrice = 100,
             };
             _mock.Setup(
                 mr =>

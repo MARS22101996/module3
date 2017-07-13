@@ -135,6 +135,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="..\..\..\..\CDPmy\module3\Shop\Shop.Test\TestDefinitions\FilteringProductsSteps.cs">
+      <Link>TestDefinitions\FilteringProductsSteps.cs</Link>
+    </Compile>
+    <Compile Include="Features\FilteringProducts.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FilteringProducts.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Login_All_Fields_Are_Entered.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -161,6 +169,10 @@
     <None Include="App.config" />
     <None Include="Default.srprofile">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Features\FilteringProducts.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>FilteringProducts.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Login_All_Fields_Are_Entered.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
