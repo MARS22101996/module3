@@ -6,7 +6,7 @@ namespace Shops.BLL.Infrastructure
 {
     public static class ExpressionBuilder
     {
-        public static Expression<T> Compose<T>(
+        private static Expression<T> Compose<T>(
             this Expression<T> first,
             Expression<T> second,
             Func<Expression, Expression, Expression> merge)

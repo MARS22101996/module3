@@ -9,13 +9,14 @@ namespace Shop.Test.TestDefinitions
     [Binding]
     public class Login_Email_Is_EnteredSteps : TestBase
     {
-        private LoginViewModel _loginModel = new LoginViewModel();
+        private readonly LoginViewModel _loginModel;
         private ViewResult _result;
-        private AccountController _sut;
+        private readonly AccountController _sut;
 
         public Login_Email_Is_EnteredSteps()
         {
-            _sut = GetAccountController();
+            _sut = AccountController;
+            _loginModel = new LoginViewModel();
         }
 
         [Given(@"User enter username (.*)")]

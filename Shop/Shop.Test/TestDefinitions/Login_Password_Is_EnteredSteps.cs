@@ -1,22 +1,22 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Web.Mvc;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shop.Controllers;
 using Shop.Models;
-using System;
-using System.Web.Mvc;
 using TechTalk.SpecFlow;
 
-namespace Shop.Test
+namespace Shop.Test.TestDefinitions
 {
     [Binding]
     public class Login_Password_Is_EnteredSteps : TestBase
     {
-        private LoginViewModel _loginModel = new LoginViewModel();
+        private readonly LoginViewModel _loginModel;
         private ViewResult _result;
-        private AccountController _sut;
+        private readonly AccountController _sut;
 
         public Login_Password_Is_EnteredSteps()
         {
-            _sut = GetAccountController();
+            _sut = AccountController;
+            _loginModel = new LoginViewModel();
         }
 
         [Given(@"User enter password (.*)")]

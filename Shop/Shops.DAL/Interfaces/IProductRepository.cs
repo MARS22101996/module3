@@ -11,11 +11,15 @@ namespace Shops.DAL.Interfaces
     public interface IProductRepository
     {
         void Create(Product item);
+
         void Update(Product item);
+
         void Delete(int id);
+
         IEnumerable<Product> GetAll();
+
         Product GetById(int id);
-        IEnumerable<Product> Get(Expression<Func<Product, bool>> predicate, Func<Product, object> sortPredicate = null);
+
         void Save();
     }
 }
