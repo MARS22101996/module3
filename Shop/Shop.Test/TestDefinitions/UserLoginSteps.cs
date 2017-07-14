@@ -21,20 +21,20 @@ namespace Shop.Test.TestDefinitions
         }
 
         [Given(@"User enters peronal username (.*) and password  (.*)")]
-        public void GivenUserEntersPeronalUsernameTestuser_AndPasswordTest(string email, string password)
+        public void GivenUserEntersPeronalUsernameAndPasswordTest(string email, string password)
         {
             _loginModel.Email = email;
             _loginModel.Password = password;
         }
 
         [Given(@"User enter personal username (.*)")]
-        public void GivenUserEnterPersonalUsernameTestuser_(string email)
+        public void GivenUserEnterPersonalUsername(string email)
         {
             _loginModel.Email = email;
         }
 
         [Given(@"User enter personal password (.*)")]
-        public void GivenUserEnterPersonalPasswordTest(string password)
+        public void GivenUserEnterPersonalPassword(string password)
         {
             _loginModel.Password = password;
         }

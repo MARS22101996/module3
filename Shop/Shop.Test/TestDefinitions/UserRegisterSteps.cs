@@ -50,7 +50,6 @@ namespace Shop.Test.TestDefinitions
         public void ThenFailedRegistration()
         {
             Assert.AreEqual(_resultFail.ViewName, "Register");
-
         }
     }
 }

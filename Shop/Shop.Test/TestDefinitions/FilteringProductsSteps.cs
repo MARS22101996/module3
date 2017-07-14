@@ -38,7 +38,7 @@ namespace Shop.Test.TestDefinitions
             });
         }
         [Given(@"I have entered brand (.*)")]
-        public void GivenIHaveEnteredBrandTestbrand_(string brand)
+        public void GivenIHaveEnteredBrand(string brand)
         {
             _filterModel.Brands = new List<string> { brand };
         }
