@@ -76,9 +76,9 @@ namespace Shop.Test.Features
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
-    testRunner.Given(string.Format("If brand\'s products exist I have entered brand  {0}", brand), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given(string.Format("I have entered brand  {0}", brand), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 9
-    testRunner.When("I press search if necessary products exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("I press search", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 10
     testRunner.Then("Get products if necessary products exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -108,9 +108,9 @@ this.GettingAppropriateProductsAfterFilteringByBrandsIfBrandsProductsExist("test
 #line 16
 this.ScenarioSetup(scenarioInfo);
 #line 17
-    testRunner.Given(string.Format("if brand\'s products do not exist I have entered brand  {0}", brand), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given(string.Format("I have entered brand  {0}", brand), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 18
-    testRunner.When("I press search if necessary products do not exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("I press search", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 19
     testRunner.Then("Do not get products if necessary products do not exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -140,9 +140,9 @@ this.GettingAppropriateProductsAfterFilteringByBrandsIfBrandsProductsDoNotExist(
 #line 25
 this.ScenarioSetup(scenarioInfo);
 #line 26
-    testRunner.Given(string.Format("If products with this price exist I have entered min price {0} and max price {1}", minprice, maxprice), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given(string.Format("I have entered min price {0} and max price {1}", minprice, maxprice), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 27
-    testRunner.When("I press search if necessary products exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("I press search", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 28
     testRunner.Then("Get products if necessary products exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -172,10 +172,9 @@ this.GettingAppropriateProductsAfterFilteringByPriceIfProductsWithThisPriceExist
 #line 34
 this.ScenarioSetup(scenarioInfo);
 #line 35
-    testRunner.Given(string.Format("If products with this price do not exist I have entered min price {0} and max pri" +
-                        "ce {1}", minprice, maxprice), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given(string.Format("I have entered min price {0} and max price {1}", minprice, maxprice), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 36
-    testRunner.When("I press search if necessary products do not exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("I press search", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 37
     testRunner.Then("Do not get products if necessary products do not exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -205,9 +204,9 @@ this.GettingAppropriateProductsAfterFilteringByPriceIfProductsWithThisPriceDoNot
 #line 43
 this.ScenarioSetup(scenarioInfo);
 #line 44
-    testRunner.Given(string.Format("If products with this name exist I have entered name {0} in the searchstring", word), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given(string.Format("I have entered name {0} in the searchstring", word), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 45
-    testRunner.When("I press search if necessary products exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("I press search", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 46
     testRunner.Then("Get products if necessary products exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -237,10 +236,9 @@ this.GettingAppropriateProductsAfterFilteringByNameIfProductsWithThisNameExist("
 #line 52
 this.ScenarioSetup(scenarioInfo);
 #line 53
-    testRunner.Given(string.Format("If products with this name do not exist I have entered name {0} in the searchstri" +
-                        "ng", word), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given(string.Format("I have entered name {0} in the searchstring", word), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 54
-    testRunner.When("I press search if necessary products do not exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("I press search", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 55
     testRunner.Then("Do not get products if necessary products do not exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

@@ -135,6 +135,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="..\..\..\..\CDPmy\module3\Shop\Shop.Test\TestDefinitions\FilteringProductsSteps1.cs">
+      <Link>FilteringProductsSteps1.cs</Link>
+    </Compile>
     <Compile Include="Features\FilteringProducts.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
