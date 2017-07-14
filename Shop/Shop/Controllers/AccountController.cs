@@ -85,7 +85,6 @@ namespace Shop.Controllers
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
@@ -446,10 +445,6 @@ namespace Shop.Controllers
 
         private ActionResult RedirectToLocal(string returnUrl)
         {
-            //if (Url.IsLocalUrl(returnUrl))
-            //{
-            //    return Redirect(returnUrl);
-            //}
             return RedirectToAction("Index", "Home");
         }
 

@@ -140,27 +140,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FilteringProducts.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\Login_All_Fields_Are_Entered.feature.cs">
+    <Compile Include="Features\UserLogin.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Login_All_Fields_Are_Entered.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\Login_Email_Is_Entered.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Login_Email_Is_Entered.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\Login_Password_Is_Entered.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Login_Password_Is_Entered.feature</DependentUpon>
+      <DependentUpon>UserLogin.feature</DependentUpon>
     </Compile>
     <Compile Include="TestBase.cs" />
     <Compile Include="TestDefinitions\FilteringProductsSteps.cs" />
-    <Compile Include="TestDefinitions\Login_Password_Is_EnteredSteps.cs" />
-    <Compile Include="TestDefinitions\Login_All_Fields_Are_EnteredSteps.cs" />
-    <Compile Include="TestDefinitions\Login_Email_Is_EnteredSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestDefinitions\UserLoginSteps.cs" />
     <Compile Include="Tests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -172,17 +160,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>FilteringProducts.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\Login_All_Fields_Are_Entered.feature">
+    <None Include="Features\UserLogin.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>Login_All_Fields_Are_Entered.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\Login_Email_Is_Entered.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>Login_Email_Is_Entered.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\Login_Password_Is_Entered.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>Login_Password_Is_Entered.feature.cs</LastGenOutput>
+      <LastGenOutput>UserLogin.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="runtests.cmd" />
