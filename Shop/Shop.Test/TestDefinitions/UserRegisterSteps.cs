@@ -17,7 +17,7 @@ namespace Shop.Test.TestDefinitions
         public UserRegisterSteps()
         {
             _sut = AccountController;
-            _registerModel = new RegisterViewModel() { Email = "test@mail", Password = "Mary_2210", ConfirmPassword = "Mary_2210" };
+            _registerModel = new RegisterViewModel();
         }
 
         [Given(@"User enter phone number (.*)")]
@@ -35,7 +35,7 @@ namespace Shop.Test.TestDefinitions
         [When(@"Click on the Registration button, when phone number does not have a valid format")]
         public void WhenClickOnTheRegistrationButtonWhenPhoneNumberDoesNotHaveAValidFormat()
         {
-            _sut.ModelState.AddModelError("test", "test");
+            _sut.ModelState.AddModelError("test", @"test");
 
             _resultFail = _sut.Register(_registerModel).Result as ViewResult;
         }

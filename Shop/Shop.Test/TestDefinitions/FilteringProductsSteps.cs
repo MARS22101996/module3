@@ -34,14 +34,12 @@ namespace Shop.Test.TestDefinitions
             {
                 new Product
                 {
-                    Id = 1,
                     Name = " testname",
                     Price = 100,
                     Brands = new List<Brand> {new Brand {Id = 1, Name = " testbrand_1"}}
                 }
             });
         }
-
 
         [Given(@"If brand's products exist I have entered brand (.*)")]
         public void GivenIfBrandSProductsExistIHaveEnteredBrandTestbrand_(string brand)

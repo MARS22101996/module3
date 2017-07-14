@@ -154,7 +154,7 @@
     <Compile Include="TestDefinitions\FilteringProductsSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestDefinitions\UserLoginSteps.cs" />
-    <Compile Include="TestDefinitions\UserRegisterSteps1.cs" />
+    <Compile Include="TestDefinitions\UserRegisterSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

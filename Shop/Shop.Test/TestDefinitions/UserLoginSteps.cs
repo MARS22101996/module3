@@ -42,7 +42,7 @@ namespace Shop.Test.TestDefinitions
         [When(@"Click on the LogIn button, when one field is not entered")]
         public void WhenClickOnTheLogInButtonWhenOneFieldIsNotEntered()
         {
-            _sut.ModelState.AddModelError("test", "test");
+            _sut.ModelState.AddModelError("test", @"test");
 
             _resultFail = _sut.Login(_loginModel, "returnurl").Result as ViewResult;
         }
