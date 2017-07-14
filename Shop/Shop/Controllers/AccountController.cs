@@ -151,7 +151,12 @@ namespace Shop.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    MobilePhone = model.MobilePhone
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -169,7 +174,7 @@ namespace Shop.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return View("Register",model);
         }
 
         //
