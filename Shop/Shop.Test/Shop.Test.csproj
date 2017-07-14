@@ -135,9 +135,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="..\..\..\..\CDPmy\module3\Shop\Shop.Test\TestDefinitions\UserRegisterSteps.cs">
-      <Link>TestDefinitions\UserRegisterSteps.cs</Link>
-    </Compile>
     <Compile Include="Features\FilteringProducts.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -157,6 +154,7 @@
     <Compile Include="TestDefinitions\FilteringProductsSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestDefinitions\UserLoginSteps.cs" />
+    <Compile Include="TestDefinitions\UserRegisterSteps1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
