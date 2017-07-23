@@ -1,9 +1,6 @@
-﻿
-using System;
+﻿using System;
 using NUnit.Framework;
 using Assert = NUnit.Framework.Assert;
-
-//using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace StringCalculator.Tests.Tests
 {
@@ -86,6 +83,19 @@ namespace StringCalculator.Tests.Tests
             Check(input, expectedResult);
         }
 
+        [Test]
+        [TestCase("//[*][%]\n1*2%3", 6)]
+        public void Add_ParamHasMultipleDelimiters_NumbersSplitedWithIt(string input, long expectedResult)
+        {
+            Check(input, expectedResult);
+        }
+
+        [Test]
+        [TestCase("//[**][%%]\n1**2%%3", 6)]
+        public void Add_ParamHasLongMultipleDelimiters_NumbersSplitedWithIt(string input, long expectedResult)
+        {
+            Check(input, expectedResult);
+        }
         private void Check(string input, long expectedResult)
         {
             var calculator = new Core.Services.StringCalculator();

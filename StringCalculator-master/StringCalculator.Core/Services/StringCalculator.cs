@@ -32,9 +32,16 @@ namespace StringCalculator.Core.Services
         {
             var delimeters = _defaultDelimeters;
 
-            if (input.StartsWith(DelimeterIdentifier))
+            if (input.StartsWith(DelimeterIdentifier) && !input.Contains("["))
             {
                 delimeters = new[] { input[DelimeterIdentifier.Length].ToString() };
+            }
+            if (input.StartsWith(DelimeterIdentifier) && input.Contains("["))
+            {
+                delimeters = input.Split('[', ']');
+                var length = delimeters.Length;
+                delimeters[length - 1] = _defaultDelimeters[0];
+                delimeters[0] = _defaultDelimeters[0];
             }
 
             return delimeters;
@@ -43,11 +50,19 @@ namespace StringCalculator.Core.Services
         private IEnumerable<long> ExtractNumbers(string input, string[] delimeters)
         {
             string numbersString = input;
-            if (input.StartsWith(DelimeterIdentifier))
+            if (input.StartsWith(DelimeterIdentifier) && !input.Contains("["))
             {
                 numbersString = input.Substring(
                     DelimeterIdentifier.Length + DelimeterIdentifierOffset);
             }
+            if (input.StartsWith(DelimeterIdentifier) && input.Contains("["))
+            {
+                delimeters = input.Split('[', ']');
+                var length = delimeters.Length;
+                numbersString = delimeters[length - 1].Substring(1);
+            }
+
+            var i = numbersString.Split(delimeters, StringSplitOptions.None);
 
             return numbersString.Split(delimeters, StringSplitOptions.None)
                     .Select(number => Convert.ToInt64(number));
