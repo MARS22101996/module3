@@ -38,13 +38,13 @@ namespace StringCalculator.Core.Services
 
         private void Process(string input)
         {
-            if (ProcessNoInput(input))
+            if (CheckInputString(input))
                 return;
 
             ProcessAddCommandWithConsoleInput(input);
         }
 
-        private bool ProcessNoInput(string input)
+        private bool CheckInputString(string input)
         {
             if (string.IsNullOrEmpty(input))
             {
@@ -74,9 +74,9 @@ namespace StringCalculator.Core.Services
 
         private static string GetPattern(string prefix)
         {
-            const string capture = @"[\d,]+";
+            const string numbersPattern = @"[\d,]+";
 
-            return $"{prefix}'({capture})'";
+            return $"{prefix}'({numbersPattern})'";
         }
 
         private void WriteCalculationResult(int result)
