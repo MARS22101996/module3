@@ -5,6 +5,7 @@ using StringCalculator.Core.Services;
 
 namespace StringCalculator.Tests.Tests
 {
+    [TestFixture]
     public class ConsoleProcessorTests
     {
         [Test]

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using StringCalculator.Core.Interfaces;
 
 namespace StringCalculator.Core.Services
 {
-    public class StringCalculator
+    public class StringCalculator : IStringCalculator
     {
-        private readonly char[] _defaultDelimeters = { ',', '\n' };
+        private readonly string[] _defaultDelimeters = { ",", "\n" };
         private const string DelimeterIdentifier = "//";
         private const int DelimeterIdentifierOffset = 2;
 
@@ -18,24 +19,28 @@ namespace StringCalculator.Core.Services
             }
 
             var delimeters = ExtractDelimeters(input);
-            var numbersArray = ExtractNumbers(input, delimeters);
+            var numbersArray = ExtractNumbers(input, delimeters).ToList();
+
+            CheckForNegativeNumbers(numbersArray);
+
+            numbersArray = FilterNumbersGreaterThanAThousand(numbersArray);
 
             return numbersArray.Sum();
         }
 
-        private char[] ExtractDelimeters(string input)
+        private string[] ExtractDelimeters(string input)
         {
             var delimeters = _defaultDelimeters;
 
             if (input.StartsWith(DelimeterIdentifier))
             {
-                delimeters = new[] { input[DelimeterIdentifier.Length] };
+                delimeters = new[] { input[DelimeterIdentifier.Length].ToString() };
             }
 
             return delimeters;
         }
 
-        private IEnumerable<long> ExtractNumbers(string input, char[] delimeters)
+        private IEnumerable<long> ExtractNumbers(string input, string[] delimeters)
         {
             string numbersString = input;
             if (input.StartsWith(DelimeterIdentifier))
@@ -44,8 +49,23 @@ namespace StringCalculator.Core.Services
                     DelimeterIdentifier.Length + DelimeterIdentifierOffset);
             }
 
-            return numbersString.Split(delimeters)
+            return numbersString.Split(delimeters, StringSplitOptions.None)
                     .Select(number => Convert.ToInt64(number));
+        }
+
+        private static void CheckForNegativeNumbers(List<long> numbers)
+        {
+            var negativeNumbers = numbers.Where(x => x < 0).ToList();
+            if (negativeNumbers.Any())
+            {
+                var exceptionMessage = $"negatives not allowed: {string.Join(", ", negativeNumbers)}";
+                throw new Exception(exceptionMessage);
+            }
+        }
+
+        private static List<long> FilterNumbersGreaterThanAThousand(List<long> numbers)
+        {
+            return numbers.Where(x => x <= 1000).ToList();
         }
     }
 }

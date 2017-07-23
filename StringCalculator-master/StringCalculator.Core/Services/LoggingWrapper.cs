@@ -3,6 +3,7 @@ using StringCalculator.Core.Interfaces;
 
 namespace StringCalculator.Core.Services
 {
+
     public class LoggingWrapper
     {
         private readonly IStringCalculator _calculator;
@@ -16,7 +17,7 @@ namespace StringCalculator.Core.Services
             _service = service;
         }
 
-        public int Add(string numbersString)
+        public long Add(string numbersString)
         {
             var result = _calculator.Add(numbersString);
 

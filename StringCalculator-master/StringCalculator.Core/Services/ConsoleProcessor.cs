@@ -79,7 +79,7 @@ namespace StringCalculator.Core.Services
             return $"{prefix}'({numbersPattern})'";
         }
 
-        private void WriteCalculationResult(int result)
+        private void WriteCalculationResult(long result)
         {
             _output.Write($"Result of Add operation is {result}.");
         }

@@ -7,6 +7,7 @@ using StringCalculator.Core.Services;
 
 namespace StringCalculator.Tests.Tests
 {
+    [TestFixture]
     public class LoggingWrapperTests
     {
         private LoggingWrapper _sut;

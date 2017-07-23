@@ -2,6 +2,6 @@
 {
     public interface IStringCalculator
     {
-        int Add(string numbersString);
+        long Add(string numbersString);
     }
 }
