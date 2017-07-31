@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GildedRoseKata.Infrastructure.Exceptions
+namespace GildedRose.Infrastructure.Exceptions
 {
     public class ServiceException : Exception
     {

@@ -1,6 +1,6 @@
 ﻿using GildedRose.Enums;
 
-namespace GildedRoseKata.Models
+namespace GildedRose.Models
 {
     public class Item
     {

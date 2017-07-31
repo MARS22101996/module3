@@ -1,7 +1,7 @@
 ﻿using GildedRose.Enums;
-using GildedRoseKata.Models;
+using GildedRose.Models;
 
-namespace GildedRoseKata.Strategy.Abstract
+namespace GildedRose.Strategy.Abstract
 {
     public interface IGoodsStrategy
     {

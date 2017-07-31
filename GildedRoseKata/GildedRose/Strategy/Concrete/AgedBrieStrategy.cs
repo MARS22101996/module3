@@ -1,7 +1,7 @@
 ﻿using GildedRose.Enums;
-using GildedRoseKata.Models;
+using GildedRose.Models;
 
-namespace GildedRoseKata.Strategy.Concrete
+namespace GildedRose.Strategy.Concrete
 {
     public class AgedBrieStrategy : AbstractStrategy
     {
@@ -9,7 +9,7 @@ namespace GildedRoseKata.Strategy.Concrete
 
         protected override void UpdateQuality(Item item)
         {
-            if (item.Quality > 50) return;
+            if (item.Quality >= 50) return;
             if (item.SellIn < 0)
                 item.Quality += 2;
             else

@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using GildedRose.Enums;
-using GildedRoseKata.Infrastructure.Exceptions;
-using GildedRoseKata.Strategy.Abstract;
+using GildedRose.Infrastructure.Exceptions;
+using GildedRose.Strategy.Abstract;
 
-namespace GildedRoseKata.Strategy
+namespace GildedRose.Strategy
 {
     public class GoodsProvider
     {
@@ -14,7 +14,7 @@ namespace GildedRoseKata.Strategy
         {
             _goodsStrategies = goodsStrategies;
         }
-        public IGoodsStrategy GetDietStrategy(GoodsType name)
+        public IGoodsStrategy GetGoodsStrategy(GoodsType name)
         {
             var result = _goodsStrategies.FirstOrDefault(x => x.Name == name);
             if (result == null)

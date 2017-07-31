@@ -1,7 +1,7 @@
 ﻿using GildedRose.Enums;
-using GildedRoseKata.Models;
+using GildedRose.Models;
 
-namespace GildedRoseKata.Strategy.Concrete
+namespace GildedRose.Strategy.Concrete
 {
     public class BackstagePassesStrategy : AbstractStrategy
     {
@@ -19,7 +19,7 @@ namespace GildedRoseKata.Strategy.Concrete
 
                 if (item.SellIn < 11)
                 {
-                    if (item.Quality <= 50)
+                    if (item.Quality < 50)
                     {
                         item.Quality++;
                     }
@@ -27,7 +27,7 @@ namespace GildedRoseKata.Strategy.Concrete
 
                 if (item.SellIn < 6)
                 {
-                    if (item.Quality <= 50)
+                    if (item.Quality < 50)
                     {
                         item.Quality++;
 

@@ -1,8 +1,8 @@
 ﻿using GildedRose.Enums;
-using GildedRoseKata.Models;
-using GildedRoseKata.Strategy.Abstract;
+using GildedRose.Models;
+using GildedRose.Strategy.Abstract;
 
-namespace GildedRoseKata.Strategy.Concrete
+namespace GildedRose.Strategy.Concrete
 {
     public class AbstractStrategy : IGoodsStrategy
     {
@@ -14,7 +14,9 @@ namespace GildedRoseKata.Strategy.Concrete
         public void UpdateGoods(Item item)
         {
             UpdateQuality(item);
+
             UpdateSellIn(item);
+
             if (item.Name != GoodsType.Sulfuras)
             {
                 CheckQuality(item);
@@ -36,7 +38,7 @@ namespace GildedRoseKata.Strategy.Concrete
             item.SellIn--;
         }
 
-        private void CheckQuality(Item item)
+        private static void CheckQuality(Item item)
         {
             if (item.Quality > MaxQuality)
             {

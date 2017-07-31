@@ -1,7 +1,7 @@
 ﻿using GildedRose.Enums;
-using GildedRoseKata.Models;
+using GildedRose.Models;
 
-namespace GildedRoseKata.Strategy.Concrete
+namespace GildedRose.Strategy.Concrete
 {
     public class SulfurasStrategy : AbstractStrategy
     {

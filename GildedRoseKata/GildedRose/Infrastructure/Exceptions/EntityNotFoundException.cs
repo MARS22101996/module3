@@ -1,4 +1,4 @@
-﻿namespace GildedRoseKata.Infrastructure.Exceptions
+﻿namespace GildedRose.Infrastructure.Exceptions
 {
     public class EntityNotFoundException : ServiceException
     {
